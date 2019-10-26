@@ -47,7 +47,7 @@
                 </div>
                 <div class="row">
                     <form action="/insertData" method="POST">
-                        <p>Ice Cream to Add</p>
+                        <p>Ingredients to Add</p>
                         <input type="text" name="flavor" />
                         <input type="submit" value="insert" />
                     </form>
@@ -79,10 +79,12 @@
                 <div class="container">
 
                     <div class="row">
+
+                        {{ iframeUrl }}
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="icon-slide-container">
                                 <a href="#">
-                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container"
+                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container image"
                                         title="test">
                                 </a>
                             </div>
@@ -92,7 +94,7 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="icon-slide-container">
                                 <a href="#">
-                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container"
+                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container image"
                                         title="test">
                                 </a>
                             </div>
@@ -102,7 +104,7 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="icon-slide-container">
                                 <a href="#">
-                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container"
+                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container image"
                                         title="test">
                                 </a>
                             </div>
@@ -115,7 +117,7 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="icon-slide-container">
                                 <a href="#">
-                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container"
+                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container image"
                                         title="test">
                                 </a>
                             </div>
@@ -125,7 +127,7 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="icon-slide-container">
                                 <a href="#">
-                                    <img src="images/egg.jpg" class="img-responsive " title="test">
+                                    <img src="images/egg.jpg" class="img-responsive image" title="test">
                                 </a>
                             </div>
                             <h4>TEST Text IN Here</h4>
@@ -157,11 +159,29 @@
                 message: 'Hello Vue!',
                 seen: false,
                 todos: [
-                    { text: 'Learn JavaScript' },
-                    { text: 'Learn Vue' },
-                    { text: 'Build something awesome' }
+                    { text: 'Learn JavaScript', checked: false },
+                    { text: 'Learn Vue', checked: false },
+                    { text: 'Build something awesome', checked: false }
                 ]
             },
+            /*
+            computed: {
+                /*
+                iframeUrl: () => {
+                    console.log(this.todos)
+                    if(!this.todos){
+                        return '';
+                    }
+                    return this.todos.filter((todo) => { 
+                        return todo.checked == false;
+                    });
+                }
+                todo() {
+                    return this.todos.filter((todo) => {
+                        return todo.checked == flase;
+                    }) 
+                }
+            },*/
             methods: {
                 reverseMessage: function () {
                     this.message = this.message.split('').reverse().join('')
