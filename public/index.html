@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
 
-<body>
+<body class="background-color">
 
     <nav class="navbar navbar-custom">
         <a class="navbar-brand white" href="index copy.html">FOOD WASTE</a>
@@ -25,10 +25,11 @@
         <div class="row">
             <div class="col-md-3 no-float">
                 <div class="row">
-                <li v-for="todo in todos">
-                        <input class="form-check-input" type="checkbox" v-model="todo.checked">
-                        {{ todo.checked }}
-                        {{ todo.text }}
+                    <li v-for="todo in todos">
+                        <div class="box">
+                            <input class="form-check-input" type="checkbox" v-model="todo.checked">
+                            <img src="images/FoodFlatArt/broccli.svg" class="smallicon" title="test"> {{ todo.checked }} {{ todo.text }}
+                        </div>
                     </li>
                     <div action="/" class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
@@ -42,17 +43,18 @@
                             Disabled checkbox
                         </label>
                     </div>
-                    <form action="/checkBox" method="POST">
-                        
-                        <input class="form-check-input" type="checkbox" name="ingredientChecked" value="hi">
-                        content
-                    </input>
-                        
-                        <input type="submit" value="insert" />
+                    <div class="box md-checkbox">
+                        <form action="/checkBox" method="POST">
+
+                            <input class="form-check-input" type="checkbox" name="ingredientChecked" value="ingredientName"> iingredientName
+                            </input>
+                    </div>
+
+                    <input type="submit" value="insert" />
                     </form>
 
 
-                    
+
                     <button v-on:click="submitMessage">Submit</button>
                 </div>
                 <div class="row">
@@ -94,8 +96,7 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="icon-slide-container">
                                 <a href="#">
-                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container image"
-                                        title="test">
+                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container image" title="test">
                                 </a>
                             </div>
                             <h4>TEST Text IN Here</h4>
@@ -104,8 +105,7 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="icon-slide-container">
                                 <a href="#">
-                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container image"
-                                        title="test">
+                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container image" title="test">
                                 </a>
                             </div>
                             <h4>TEST Text IN Here</h4>
@@ -114,8 +114,7 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="icon-slide-container">
                                 <a href="#">
-                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container image"
-                                        title="test">
+                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container image" title="test">
                                 </a>
                             </div>
                             <h4>TEST Text IN Here</h4>
@@ -127,8 +126,7 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="icon-slide-container">
                                 <a href="#">
-                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container image"
-                                        title="test">
+                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container image" title="test">
                                 </a>
                             </div>
                             <h4>TEST Text IN Here</h4>
@@ -146,8 +144,7 @@
                         <div class="col-lg-3 col-sm-6 col-12">
                             <div class="icon-slide-container">
                                 <a href="#">
-                                    <img src="images/egg.jpg" class="img-responsive image slide icon-slide-container"
-                                        title="test">
+                                    <img src="images/egg.jpg" class="img-responsive image slide icon-slide-container" title="test">
                                 </a>
                             </div>
                             <h4>TEST Text IN Here</h4>
@@ -168,11 +165,16 @@
             data: {
                 message: 'Hello Vue!',
                 seen: false,
-                todos: [
-                    { text: 'Learn JavaScript', checked: false },
-                    { text: 'Learn Vue', checked: false },
-                    { text: 'Build something awesome', checked: false }
-                ]
+                todos: [{
+                    text: 'Learn JavaScript',
+                    checked: false
+                }, {
+                    text: 'Learn Vue',
+                    checked: false
+                }, {
+                    text: 'Build something awesome',
+                    checked: false
+                }]
             },
             /*
             computed: {
@@ -193,9 +195,9 @@
                 }
             },*/
             methods: {
-                submitMessage: function () {
+                submitMessage: function() {
 
-    
+
                 }
             }
         })

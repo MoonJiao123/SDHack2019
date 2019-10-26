@@ -2,8 +2,9 @@
     color: #ffffff;
     background-color: #853700;
 }
-.white{
-    color:#ffffff;
+
+.white {
+    color: #ffffff;
 }
 
 .image {
@@ -22,14 +23,50 @@
     margin-left: auto;
     
     overflow: hidden;
-*/    
-transition: margin-top .5s;
-    -moz-transition: margin-top .5s; /* Firefox 4 */
-    -webkit-transition: margin-top .5s; /* Safari and Chrome */
-    -o-transition: margin-top .5s; /* Opera */
+*/
+    transition: margin-top .5s;
+    -moz-transition: margin-top .5s;
+    /* Firefox 4 */
+    -webkit-transition: margin-top .5s;
+    /* Safari and Chrome */
+    -o-transition: margin-top .5s;
+    /* Opera */
 }
-  
-  .image:hover {
-    margin-top: -10px;    
-    
-  }
+
+.image:hover {
+    margin-top: -10px;
+}
+
+
+/* We're working with the body tag, and so with the WHOLE page */
+
+.background-color {
+    background-color: rgb(194, 175, 175);
+    /* The page background will be black */
+}
+
+img.smallicon {
+    float: left;
+    width: 40px;
+    height: 40px;
+}
+
+.box:hover {
+    background-color: #c4a16d;
+    cursor: pointer;
+}
+
+
+/*checkBox styles*/
+
+md-checkbox {
+    margin-bottom: 16px;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+    min-width: 20px;
+    min-height: 20px;
+    margin-left: 0;
+    margin-right: 16px;
+}
