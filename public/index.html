@@ -12,7 +12,7 @@
 <body>
 
     <nav class="navbar navbar-custom">
-        <a class="navbar-brand white" href="index copy.html">FOOD WASTE</a>
+        <a class="navbar-brand white" href="index.html">FOOD WASTE</a>
     </nav>
     <!--
         <div class="col">
@@ -58,30 +58,36 @@
                 <div class="row">
                     <form action="/insertData" method="POST">
                         <p>Ingredients to Add</p>
-                        <input type="text" name="flavor" />
+                        <input type="text" name="ingred" />
                         <input type="submit" value="insert" />
                     </form>
-                    <form action="/count" method="GET">
-                        <p>Ice Cream to Find How Many Exist in our Database</p>
-                        <input type="text" name="flavor" />
-                        <input type="submit" value="search" />
+
+                    <form action="/insertImage" method="POST" enctype="multipart/form-data">
+                        <p>Image to Add</p>
+                        <input type="file" name="filetoupload" />
+                        <input type="submit" value="submit" />
                     </form>
-                    <form action="/randomFlavor" method="GET">
-                        <p>Grabbing a random flavor</p>
-                        <input type="submit" value="randomFlavor" />
+                   
+                    <form action="/generate" method="GET">
+                        <p>Generate the look up index of recipe</p>
+                        <input type="submit" value="generate" /> 
+                    </form>
+
+                    <form action="/getRecipe" method="GET">
+                        <p>Get the url of the recipe</p>
+                        <input type="submit" value="GetUrl" /> 
+                    </form>
+
+                    <form action="/count" method="GET">
+                        <p>Ingredients to Find How Many Exist in our Database</p>
+                        <input type="text" name="ingred" />
+                        <input type="submit" value="search" />
                     </form>
                 </div>
                 <div class="row">
                     <div class="form-check">
                         <label class="form-check-label">check</label>
                     </div>
-                </div>
-                <div>
-                    <form action="/insertData" method="POST">
-                        <p>Ice Cream to Add</p>
-                        <input type="text" name="flavor" />
-                        <input type="submit" value="insert" />
-                    </form>
                 </div>
 
             </div>
