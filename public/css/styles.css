@@ -1,6 +1,6 @@
 .navbar-custom {
-    color: #ffffff;
-    background-color: #853700;
+    color: #000000;
+    background-color: #fb7036;
 }
 
 .white {
@@ -16,14 +16,14 @@
     right: 0;
     z-index: 2;
     
-    width: 238px;
-    height: auto;
     margin-right: auto;
     margin-bottom: auto;
     margin-left: auto;
     
     overflow: hidden;
 */
+    max-width: 100%;
+    max-height: 100%;
     transition: margin-top .5s;
     -moz-transition: margin-top .5s;
     /* Firefox 4 */
@@ -41,7 +41,7 @@
 /* We're working with the body tag, and so with the WHOLE page */
 
 .background-color {
-    background-color: rgb(194, 175, 175);
+    background-color: #ffffff;
     /* The page background will be black */
 }
 
@@ -51,8 +51,20 @@ img.smallicon {
     height: 40px;
 }
 
+img.icon {
+    /*float: left;*/
+    width: 60px;
+    height: 60px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.box {
+    height: 80px;
+}
+
 .box:hover {
-    background-color: #c4a16d;
+    background-color: #eec5b5;
     cursor: pointer;
 }
 
@@ -69,4 +81,75 @@ md-checkbox {
     min-height: 20px;
     margin-left: 0;
     margin-right: 16px;
+}
+
+h1.white {
+    margin-top: 20px;
+    font-variant: small-caps;
+    color: rgb(255, 255, 255);
+    font-size: 300%;
+    display: inline-block;
+}
+
+.sec {
+    margin: 25px 25px 25px 25px;
+}
+
+.addPadding {
+    padding: 25px 25px;
+}
+
+.icon-slide-container {}
+
+div {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif
+}
+
+.p {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif
+}
+
+.checkbox label:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.checkbox .cr {
+    position: relative;
+    display: inline-block;
+    border: 2px solid #fb7036;
+    border-radius: 0em;
+    width: 1.3em;
+    height: 1.3em;
+    float: left;
+    margin-right: .5em;
+}
+
+.checkbox .cr:hover {
+    border: 3px solid #fb7036;
+}
+
+.checkbox .cr .cr-icon {
+    position: absolute;
+    font-size: .8em;
+    line-height: 0;
+    top: 50%;
+    left: 15%;
+}
+
+.checkbox label input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox label input[type="checkbox"]+.cr>.cr-icon {
+    opacity: 0;
+}
+
+.checkbox label input[type="checkbox"]:checked+.cr>.cr-icon {
+    opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled+.cr {
+    opacity: .5;
 }

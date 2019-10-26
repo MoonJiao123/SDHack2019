@@ -6,13 +6,19 @@
     <title> FOOD WASTE </title>
     <link type="text/css" rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 </head>
 
 <body class="background-color">
 
     <nav class="navbar navbar-custom">
-        <a class="navbar-brand white" href="index.html">FOOD WASTE</a>
+        <!--a class="navbar-brand white" href="index.html">FOOD WASTE</a-->
+        <div class="container">
+            <img class="icon" src="images/FoodFlatArt/pear.svg" />
+            <h1 class="white changeFont" href="index.html">REciPE 101.</h1>
+        </div>
     </nav>
     <!--
         <div class="col">
@@ -43,6 +49,13 @@
                             Disabled checkbox
                         </label>
                     </div>
+                    <div class="checkbox">
+                        <label>
+                         <input type="checkbox" value="">
+                         <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                         Chicken
+                         </label>
+                    </div>
                     <div class="box md-checkbox">
                         <form action="/checkBox" method="POST">
 
@@ -69,15 +82,15 @@
                         <input type="file" name="filetoupload" />
                         <input type="submit" value="submit" />
                     </form>
-                   
+
                     <form action="/generate" method="GET">
                         <p>Generate the look up index of recipe</p>
-                        <input type="submit" value="generate" /> 
+                        <input type="submit" value="generate" />
                     </form>
 
                     <form action="/getRecipe" method="GET">
                         <p>Get the url of the recipe</p>
-                        <input type="submit" value="GetUrl" /> 
+                        <input type="submit" value="GetUrl" />
                     </form>
 
                     <form action="/count" method="GET">
@@ -94,120 +107,116 @@
 
             </div>
             <div class="col-md-9 no-float">
-                <div class="container">
 
-                    <div class="row">
 
-                        {{ iframeUrl }}
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="icon-slide-container">
-                                <a href="#">
-                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container image" title="test">
-                                </a>
-                            </div>
-                            <h4>TEST Text IN Here</h4>
-                            <p class="marg">Test filling in for image process</p>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-12 addPadding" style="height: 100%">
+                        <div class="icon-slide-container shadow-sm">
+                            <a href="#">
+                                <img src="images/Recipe/eggBread.jpg" class="image shadow-sm rounded" title="test">
+                            </a>
                         </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="icon-slide-container">
-                                <a href="#">
-                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container image" title="test">
-                                </a>
-                            </div>
-                            <h4>TEST Text IN Here</h4>
-                            <p class="marg">Test filling in for image process</p>
+                        <h4>TEST Text IN Here</h4>
+                        <p class="marg">Test filling in for image process</p>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12 addPadding" style="height: 100%">
+                        <div class="icon-slide-container">
+                            <a href="#">
+                                <img src="images/Recipe/eggCloud.jpg" class="img-responsive slide icon-slide-container image" title="test">
+                            </a>
                         </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="icon-slide-container">
-                                <a href="#">
-                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container image" title="test">
-                                </a>
-                            </div>
-                            <h4>TEST Text IN Here</h4>
-                            <p class="marg">Test filling in for image process</p>
+                        <h4>TEST Text IN Here</h4>
+                        <p class="marg">Test filling in for image process</p>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12 addPadding" style="height: 100%">
+                        <div class="icon-slide-container">
+                            <a href="#">
+                                <img src="images/Recipe/eggQuail.jpg" class="img-responsive slide icon-slide-container image" title="test">
+                            </a>
                         </div>
+                        <h4>TEST Text IN Here</h4>
+                        <p class="marg">Test filling in for image process</p>
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="icon-slide-container">
-                                <a href="#">
-                                    <img src="images/egg.jpg" class="img-responsive slide icon-slide-container image" title="test">
-                                </a>
-                            </div>
-                            <h4>TEST Text IN Here</h4>
-                            <p class="marg">Test filling in for image process</p>
+                    <div class="col-lg-4 col-sm-6 col-12 addPadding">
+                        <div class="icon-slide-container">
+                            <a href="#">
+                                <img src="images/Recipe/eggBacon.jpg" class="img-responsive slide icon-slide-container image" title="test">
+                            </a>
                         </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="icon-slide-container">
-                                <a href="#">
-                                    <img src="images/egg.jpg" class="img-responsive image" title="test">
-                                </a>
-                            </div>
-                            <h4>TEST Text IN Here</h4>
-                            <p class="marg">Test filling in for image process</p>
-                        </div>
-                        <div class="col-lg-3 col-sm-6 col-12">
-                            <div class="icon-slide-container">
-                                <a href="#">
-                                    <img src="images/egg.jpg" class="img-responsive image slide icon-slide-container" title="test">
-                                </a>
-                            </div>
-                            <h4>TEST Text IN Here</h4>
-                            <p class="marg">Test filling in for image process</p>
-                        </div>
+                        <h4>TEST Text IN Here</h4>
+                        <p class="marg">Test filling in for image process</p>
                     </div>
+                    <div class="col-lg-4 col-sm-6 col-12 addPadding">
+                        <div class="icon-slide-container">
+                            <a href="#">
+                                <img src="images/Recipe/eggStrip.jpg" class="img-responsive image" title="test">
+                            </a>
+                        </div>
+                        <h4>TEST Text IN Here</h4>
+                        <p class="marg">Test filling in for image process</p>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-12 addPadding">
+                        <div class="icon-slide-container">
+                            <a href="#">
+                                <img src="images/Recipe/eggTomato.jpg" class="img-responsive image slide icon-slide-container" title="test">
+                            </a>
+                        </div>
+                        <h4>TEST Text IN Here</h4>
+                        <p class="marg">Test filling in for image process</p>
+                    </div>
+
+
 
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- development version, includes helpful console warnings -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                message: 'Hello Vue!',
-                seen: false,
-                todos: [{
-                    text: 'Learn JavaScript',
-                    checked: false
-                }, {
-                    text: 'Learn Vue',
-                    checked: false
-                }, {
-                    text: 'Build something awesome',
-                    checked: false
-                }]
-            },
-            /*
-            computed: {
+        <!-- development version, includes helpful console warnings -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    message: 'Hello Vue!',
+                    seen: false,
+                    todos: [{
+                        text: 'Learn JavaScript',
+                        checked: false
+                    }, {
+                        text: 'Learn Vue',
+                        checked: false
+                    }, {
+                        text: 'Build something awesome',
+                        checked: false
+                    }]
+                },
                 /*
-                iframeUrl: () => {
-                    console.log(this.todos)
-                    if(!this.todos){
-                        return '';
+                computed: {
+                    /*
+                    iframeUrl: () => {
+                        console.log(this.todos)
+                        if(!this.todos){
+                            return '';
+                        }
+                        return this.todos.filter((todo) => { 
+                            return todo.checked == false;
+                        });
                     }
-                    return this.todos.filter((todo) => { 
-                        return todo.checked == false;
-                    });
-                }
-                todo() {
-                    return this.todos.filter((todo) => {
-                        return todo.checked == flase;
-                    }) 
-                }
-            },*/
-            methods: {
-                submitMessage: function() {
+                    todo() {
+                        return this.todos.filter((todo) => {
+                            return todo.checked == flase;
+                        }) 
+                    }
+                },*/
+                methods: {
+                    submitMessage: function() {
 
 
+                    }
                 }
-            }
-        })
-    </script>
+            })
+        </script>
 </body>
 
 
