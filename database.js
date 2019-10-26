@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
 });
-
+/*
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
@@ -32,8 +32,9 @@ con.connect(function (err) {
   /*con.query("CREATE DATABASE mydb", function (err, result) {
     if (err) throw err;
     console.log("Database created");
-  }); */
+  }); 
 });
+*/
 
 // List of ice cream flavors
 const iceCreams = [];
