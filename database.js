@@ -36,12 +36,17 @@ con.connect(function (err) {
 
 // List of ice cream flavors
 const ingredients = [];
+const checked = [];
 
 // Inserting an ice cream
 app.post('/insertData', (req, res) => {
     const params = req.body;
     ingredients.push(params.flavor);
     res.redirect('/');
+});
+
+app.post('/checkBox', (req, res) => {
+    checked.push(req.body.ingredientChecked);
 });
 
 app.post('/insertImage', (req, res) => {
@@ -57,6 +62,11 @@ app.post('/insertImage', (req, res) => {
 // Gets all the ice creams in the array
 app.get('/getData', (req, res) => {
     res.send(ingredients.toString());
+});
+
+// Gets all the ice creams in the array
+app.get('/getCheck', (req, res) => {
+    res.send(checked.toString());
 });
 
 // TODO: Write a GET request to /count that checks iterates through 
