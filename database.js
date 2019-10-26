@@ -1,9 +1,11 @@
 const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
+const fs = require('fs');
 const formidable = require('formidable');
 const app = express();
 const server = http.createServer(app);
+
 
 // Server will always find an open port.
 const port = process.env.PORT || 3001;
@@ -18,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
 });
-/*
+
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
@@ -32,16 +34,19 @@ con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 });
-*/
+
 
 // List of ice cream flavors
 const ingredients = [];
 const checked = [];
+var newpath;
+const pull_result = [];
+const url_result = [];
 
 // Inserting an ice cream
 app.post('/insertData', (req, res) => {
     const params = req.body;
-    ingredients.push(params.flavor);
+    ingredients.push(params.ingred);
     res.redirect('/');
 });
 
@@ -52,8 +57,13 @@ app.post('/checkBox', (req, res) => {
 app.post('/insertImage', (req, res) => {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
-      var filePath = files.filetoupload.path;
-      res.write('File uploaded');
+      var oldpath = files.filetoupload.path;
+      newpath =  'C:/Users/wang1/Documents/GitHub/SDHack2019/' + files.filetoupload.name;
+      console.log('File uploaded');
+      fs.rename(oldpath, newpath, function (err) {
+        if (err) throw err;
+        console.log('File uploaded and moved!');
+      });
       res.end();
     });
     res.redirect('/');
@@ -69,28 +79,60 @@ app.get('/getCheck', (req, res) => {
     res.send(checked.toString());
 });
 
+app.get('/generate', (req, res) => {
+    var str = '(';
+    for (var i = 0; i < ingredients.length - 1; i++){
+        str = str + '\"' + ingredients[i] + '\"' + ', ';
+    }
+    str = str + '\"' + ingredients[ingredients.length - 1] + '\"' + ")";
+    var queryreq = 'select * from ingredients join pivot on pivot.ingredients_id = ingredients.id where ingredients.name in ' + str;
+    con.query(queryreq, function(err, result, fields){
+        if (err) throw err;
+        for (var j of result){
+            pull_result.push(j.recipes_id);
+        }
+        console.log(pull_result);
+        res.send(pull_result.toString());
+    });
+});
+
 // TODO: Write a GET request to /count that checks iterates through 
 //       the array and sends how many of a certain ice cream flavor 
 //       exists to the response.
 //       Use req.param.flavor to grab the flavor parameter.
 app.get('/count', (req, res) => {
-    const flavor = req.query.flavor;
+    const flavor = req.query.ingred;
     let count = 0;
     for (let i = 0; i < ingredients.length; i++) {
-        if (ingredients[i] == flavor) {
+        if (ingredients[i] == ingred) {
             count++;
         }
     }
     res.json(count);
 });
 
-
+app.get('/getRecipe', (req, res) => {
+    var str = '(';
+    for (var i = 0; i < pull_result.length - 1; i++){
+        str = str + '\"' + pull_result[i] + '\"' + ', ';
+    }
+    str = str + '\"' + pull_result[pull_result.length - 1] + '\"' + ")";
+    var urlreq = 'select * from recipes join pivot on pivot.recipes_id = recipes.id where recipes.id in ' + str;
+    con.query(urlreq, function(err, result, fields){
+        if (err) throw err;
+        for (var j of result){
+            url_result.push(j.url);
+        }
+        console.log(url_result);
+        res.send(url_result.toString());
+    });  
+});
 
 // TODO: Write a GET request to /randomFlavor that sends a random 
 //       flavor from our array to the response.
 
 // Method that gets a random index from the iceCreams array
-function getRandomNumber() {
+/*function getRandomNumber() {
     const num = Math.floor(Math.random() * ingredients.length);
     return num;
-}
+}*/
