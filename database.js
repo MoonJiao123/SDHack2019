@@ -1,6 +1,7 @@
 const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
+const formidable = require('formidable');
 const app = express();
 const server = http.createServer(app);
 
@@ -21,33 +22,40 @@ app.get('/', (req, res) => {
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
-    host: "recipes.c7xidubf4tii.us-east-2.rds.amazonaws.com",
+    host: "recipes-ca.czmmtifous4d.us-west-1.rds.amazonaws.com",
     user: "admin",
-    password: "MY9TFk8xvKt37dslRotD"
+    password: "MY9TFk8xvKt37dslRotD",
+    database: "recipes"
 });
 
 con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
-  /*con.query("CREATE DATABASE mydb", function (err, result) {
-    if (err) throw err;
-    console.log("Database created");
-  }); */
 });
 
 // List of ice cream flavors
-const iceCreams = [];
+const ingredients = [];
 
 // Inserting an ice cream
 app.post('/insertData', (req, res) => {
     const params = req.body;
-    iceCreams.push(params.flavor);
+    ingredients.push(params.flavor);
+    res.redirect('/');
+});
+
+app.post('/insertImage', (req, res) => {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function (err, fields, files) {
+      var filePath = files.filetoupload.path;
+      res.write('File uploaded');
+      res.end();
+    });
     res.redirect('/');
 });
 
 // Gets all the ice creams in the array
 app.get('/getData', (req, res) => {
-    res.send(iceCreams.toString());
+    res.send(ingredients.toString());
 });
 
 // TODO: Write a GET request to /count that checks iterates through 
@@ -57,8 +65,8 @@ app.get('/getData', (req, res) => {
 app.get('/count', (req, res) => {
     const flavor = req.query.flavor;
     let count = 0;
-    for (let i = 0; i < iceCreams.length; i++) {
-        if (iceCreams[i] == flavor) {
+    for (let i = 0; i < ingredients.length; i++) {
+        if (ingredients[i] == flavor) {
             count++;
         }
     }
@@ -72,6 +80,6 @@ app.get('/count', (req, res) => {
 
 // Method that gets a random index from the iceCreams array
 function getRandomNumber() {
-    const num = Math.floor(Math.random() * iceCreams.length);
+    const num = Math.floor(Math.random() * ingredients.length);
     return num;
 }
