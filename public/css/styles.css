@@ -1,0 +1,35 @@
+.navbar-custom {
+    color: #ffffff;
+    background-color: #853700;
+}
+.white{
+    color:#ffffff;
+}
+
+.image {
+    /*display: block;
+    position: absolute;
+    
+      top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    
+    width: 238px;
+    height: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    
+    overflow: hidden;
+*/    
+transition: margin-top .5s;
+    -moz-transition: margin-top .5s; /* Firefox 4 */
+    -webkit-transition: margin-top .5s; /* Safari and Chrome */
+    -o-transition: margin-top .5s; /* Opera */
+}
+  
+  .image:hover {
+    margin-top: -10px;    
+    
+  }
