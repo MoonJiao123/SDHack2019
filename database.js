@@ -6,6 +6,22 @@ const formidable = require('formidable');
 const app = express();
 const server = http.createServer(app);
 
+// Load the SDK and UUID
+var AWS = require('aws-sdk');
+AWS.config.update({region: "us-west-2"})
+// Initialize the Amazon Cognito credentials provider
+// AWS.config.region = 'us-east-1'; // Region
+// AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+//     IdentityPoolId: 'us-east-1:6a38f550-ce8a-4070-bea4-2c39d86d51e1',
+// });
+
+// const config = new AWS.Config({
+//     // accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+//     // secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+//     region: 'us-west-2'
+//   })
+
+var rekognition = new AWS.Rekognition();
 
 // Server will always find an open port.
 const port = process.env.PORT || 3001;
@@ -36,12 +52,17 @@ con.connect(function (err) {
 });
 
 
-// List of ice cream flavors
+// List of ingredients, pulled_idx, url
 const ingredients = [];
 const checked = [];
 var newpath;
 const pull_result = [];
 const url_result = [];
+var img_text = [];
+
+// Create an S3 client
+var s3 = new AWS.S3();
+
 
 // Inserting an ice cream
 app.post('/insertData', (req, res) => {
@@ -58,15 +79,9 @@ app.post('/insertImage', (req, res) => {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
       var oldpath = files.filetoupload.path;
-      newpath =  'C:/Users/wang1/Documents/GitHub/SDHack2019/' + files.filetoupload.name;
-      console.log('File uploaded');
-      fs.rename(oldpath, newpath, function (err) {
-        if (err) throw err;
-        console.log('File uploaded and moved!');
-      });
-      res.end();
+      processImg(oldpath, res);
     });
-    res.redirect('/');
+    //res.redirect('/');
 });
 
 // Gets all the ice creams in the array
@@ -101,7 +116,7 @@ app.get('/generate', (req, res) => {
 //       exists to the response.
 //       Use req.param.flavor to grab the flavor parameter.
 app.get('/count', (req, res) => {
-    const flavor = req.query.ingred;
+    const ingred = req.query.ingred;
     let count = 0;
     for (let i = 0; i < ingredients.length; i++) {
         if (ingredients[i] == ingred) {
@@ -128,6 +143,37 @@ app.get('/getRecipe', (req, res) => {
     });  
 });
 
+function base64_encode(file) {
+    // read binary data
+    var bitmap = fs.readFileSync(file);
+    // convert binary data to base64 encoded string
+    return new Buffer(bitmap).toString('base64');
+}
+
+
+function processImg(path, res){
+    const params = {
+        Image: {
+            Bytes: fs.readFileSync(path)
+        }
+    };
+    rekognition.detectText(params, function(err, data) {
+        if (err) console.log(err, err.stack); // an error occurred
+        else {
+            console.log(data);  
+            img_text = data;
+        }            // successful response
+
+        res.send(data);
+
+    });
+
+}
+
+// rekognition.compareFaces(params, function (err, data) {
+//   if (err) console.log(err, err.stack); // an error occurred
+//   else     console.log(data);           // successful response
+// });
 // TODO: Write a GET request to /randomFlavor that sends a random 
 //       flavor from our array to the response.
 
