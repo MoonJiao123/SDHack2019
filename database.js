@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
 });
-
+/*
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
@@ -32,6 +32,7 @@ con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 });
+*/
 
 // List of ice cream flavors
 const ingredients = [];
