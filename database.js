@@ -29,6 +29,8 @@ server.listen(port, '0.0.0.0', () => {
     console.log(`Server listening on port ${port}`);
 });
 
+app.use(express.static(__dirname + '/public'));
+
 // Needed to process body parameters for POST requests
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -136,7 +138,7 @@ app.get('/getRecipe', (req, res) => {
     con.query(urlreq, function(err, result, fields){
         if (err) throw err;
         for (var j of result){
-            url_result.push(j.url);
+            url_result.push([j.name, j.url, j.image]);
         }
         console.log(url_result);
         res.send(url_result.toString());
@@ -160,11 +162,18 @@ function processImg(path, res){
     rekognition.detectText(params, function(err, data) {
         if (err) console.log(err, err.stack); // an error occurred
         else {
-            console.log(data);  
-            img_text = data;
+            console.log(data); 
+            for (var d of data.TextDetections){
+                if (d.Type == "LINE"){
+                    if (d.DetectedText.substr(d.DetectedText.length-1).match(/X/g)){
+                        img_text.push(d.DetectedText);
+                    }
+                }
+            }
+            
         }            // successful response
 
-        res.send(data);
+        res.send(img_text);
 
     });
 
