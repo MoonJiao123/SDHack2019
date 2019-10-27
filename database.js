@@ -55,23 +55,12 @@ con.connect(function (err) {
 
 
 // List of ingredients, pulled_idx, url
-var ingredients = [];
-var checked = [];
-var newpath;
-var pull_result = [];
-var url_result = [];
-var img_text = [];
-var urgent5d = [];
-var urgent5d_id = [];
-var rec_id_dicts;
 const all_ingre =  ['egg','milk','avocado','fish','beef','chicken','tofu','pork','beans','pepper','cauliflower',
 'rice','cabbage','lettuce','carrot','onion','spinash','potato','tomato','broccoli'];
 //array to stro recipes
 var recipes_result = [];
 var count_result = [];
 
-// Create an S3 client
-var s3 = new AWS.S3();
 
 
 // Inserting an ice cream
@@ -91,28 +80,71 @@ app.post('/insertImage', (req, res) => {
       var oldpath = files.filetoupload.path;
       processImg(oldpath, res);
     });
-    //res.redirect('/');
 });
 
-// Gets all the ice creams in the array
-app.get('/getData', (req, res) => {
-    res.send(ingredients.toString());
-});
+function processImg(path, res){
+    const params = {
+        Image: {
+            Bytes: fs.readFileSync(path)
+        }
+    };
+    rekognition.detectText(params, function(err, data) {
+        var img_text = [];
+        var expiredIn5d = [];
+        if (err) console.log(err, err.stack); // an error occurred
+        else {
+            console.log(data); 
+            for (var d of data.TextDetections){
+                if (d.Type == "LINE"){
+                    if (d.DetectedText.substr(d.DetectedText.length-1).match(/X/g)){ // Check if last character is 'X', which is ingre
+                        img_text.push(d.DetectedText.toLowerCase().split(" "));
+                    } // img_text in the format of ["name", "expiration date", "price", "IsIngreFlag"]
+                }
+            }
+            
+        }            // successful response
+
+        img_text, expireIn5d = formatImgText(img_text);
+        console.log(expiredIn5d);
+        res.send(img_text);
+    });
+}
+
+function formatImgText(textInImg){
+    var formatted = [];
+    var urgent5d = [];
+    for (var s of textInImg){
+        if (all_ingre.includes(s[0])){
+            var dt;
+            if (s[1].length == 6){
+                dt = Date.parse('20' + s[1].substr(4,2) + "-" + s[1].substr(0,2) + "-" + s[1].substr(2,2));
+            } else {
+                dt = -1;
+            }
+            if (dt>0 && dt - Date.parse(new Date) < 432000000){ // Five Days
+                urgent5d.push(s[0]);
+            }
+            formatted.push(s[0]);
+        }
+    }
+    return formatted, urgent5d;
+}
 
 // Gets all the ice creams in the array
-app.get('/getCheck', (req, res) => {
-    res.send(checked.toString());
-});
+//app.get('/getData', (req, res) => {
+//    res.send(ingredients.toString());
+//});
+
+// Gets all the ice creams in the array
+//app.get('/getCheck', (req, res) => {
+//    res.send(checked.toString());
+//});
 
 app.post('/generate', (req, res) => {
-    console.log(req.body);
-});
-
-app.get('/generate', (req, res) => {
-    pull_result = [];
-    recipes_result = [];
-    count_result = [];
-    ingredients = ingredients.filter(onlyUnique);
+    var pull_result = [];
+    var recipes_result = [];
+    var count_result = [];
+    var ingredients = req.body.ingredient.filter(onlyUnique);
     var str = '(';
     for (var i = 0; i < ingredients.length - 1; i++){
         str = str + '\"' + ingredients[i] + '\"' + ', ';
@@ -121,14 +153,16 @@ app.get('/generate', (req, res) => {
     var queryreq = 'select recipes.name, recipes.url, recipes.image, count(*) as freq from ingredients join pivot on pivot.ingredients_id = ingredients.id  join recipes on pivot.recipes_id = recipes.id where ingredients.name in ' + str + ' group by recipes.name, recipes.url, recipes.image order by freq desc ';
 
     con.query(queryreq, function(err, result, fields){
-        if (err) throw err;
+        /*if (err) throw err;
         for (var j of result){
             pull_result.push(j.recipes_id);
             recipes_result.push(j.name);
             count_result.push(j.freq);
         }
-        console.log(recipes_result);
-        res.send(recipes_result.toString());
+        ingredients = [];
+        */
+        console.log(result);
+        res.json(result);
     });
 });
 
@@ -136,11 +170,11 @@ app.get('/generate', (req, res) => {
 //       the array and sends how many of a certain ice cream flavor 
 //       exists to the response.
 //       Use req.param.flavor to grab the flavor parameter.
-app.get('/count', (req, res) => {
-    res.send(urgent5d.toString());
-});
+// app.get('/count', (req, res) => {
+//     res.send(urgent5d.toString());
+// });
 
-app.get('/getRecipe', (req, res) => {
+/*app.get('/getRecipe', (req, res) => {
     var str = '(';
     for (var i = 0; i < pull_result.length - 1; i++){
         str = str + '\"' + pull_result[i] + '\"' + ', ';
@@ -157,8 +191,7 @@ app.get('/getRecipe', (req, res) => {
         console.log(recipes_result);
         res.send(url_result.toString());
     });  
-});
-
+}); */
 
 
 
@@ -172,65 +205,3 @@ function base64_encode(file) {
 function onlyUnique(value, index, self) { 
     return self.indexOf(value) === index;
 }
-
-function processImg(path, res){
-    const params = {
-        Image: {
-            Bytes: fs.readFileSync(path)
-        }
-    };
-    rekognition.detectText(params, function(err, data) {
-        if (err) console.log(err, err.stack); // an error occurred
-        else {
-            console.log(data); 
-            for (var d of data.TextDetections){
-                if (d.Type == "LINE"){
-                    if (d.DetectedText.substr(d.DetectedText.length-1).match(/X/g)){
-                        img_text.push(d.DetectedText.toLowerCase().split(" "));
-                    }
-                }
-            }
-            
-        }            // successful response
-
-        
-        res.send(formatImgText());
-    });
-
-
-}
-
-function formatImgText(){
-    var formatted = [];
-    for (var s of img_text){
-        if (all_ingre.includes(s[0])){
-            var dt;
-            if (s[1].length == 6){
-                dt = Date.parse('20' + s[1].substr(4,2) + "-" + s[1].substr(0,2) + "-" + s[1].substr(2,2));
-            } else {
-                dt = -1;
-            }
-            if (dt>0 && dt - Date.parse(new Date) < 432000000){
-                urgent5d.push(s[0]);
-            }
-            
-            formatted.push(s[0]);
-        }
-    }
-    img_text = formatted;
-    return img_text;
-}
-
-
-// rekognition.compareFaces(params, function (err, data) {
-//   if (err) console.log(err, err.stack); // an error occurred
-//   else     console.log(data);           // successful response
-// });
-// TODO: Write a GET request to /randomFlavor that sends a random 
-//       flavor from our array to the response.
-
-// Method that gets a random index from the iceCreams array
-/*function getRandomNumber() {
-    const num = Math.floor(Math.random() * ingredients.length);
-    return num;
-}*/
