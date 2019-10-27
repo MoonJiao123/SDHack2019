@@ -55,12 +55,15 @@ con.connect(function (err) {
 
 
 // List of ingredients, pulled_idx, url
-const ingredients = [];
-const checked = [];
+var ingredients = [];
+var checked = [];
 var newpath;
-const pull_result = [];
-const url_result = [];
+var pull_result = [];
+var url_result = [];
 var img_text = [];
+//array to stro recipes
+var recipes_result = [];
+var count_result = [];
 
 // Create an S3 client
 var s3 = new AWS.S3();
@@ -102,14 +105,17 @@ app.get('/generate', (req, res) => {
         str = str + '\"' + ingredients[i] + '\"' + ', ';
     }
     str = str + '\"' + ingredients[ingredients.length - 1] + '\"' + ")";
-    var queryreq = 'select * from ingredients join pivot on pivot.ingredients_id = ingredients.id where ingredients.name in ' + str;
+    var queryreq = 'select recipes.name, recipes.url, recipes.image, count(*) as freq from ingredients join pivot on pivot.ingredients_id = ingredients.id  join recipes on pivot.recipes_id = recipes.id where ingredients.name in ' + str + ' group by recipes.name, recipes.url, recipes.imageorder by freq desc ';
+
     con.query(queryreq, function(err, result, fields){
         if (err) throw err;
         for (var j of result){
             pull_result.push(j.recipes_id);
+            recipes_result.push(j.name);
+            count_result.push(j.freq);
         }
-        console.log(pull_result);
-        res.send(pull_result.toString());
+        console.log(recipes_result);
+        res.send(recipes_result.toString());
     });
 });
 
@@ -134,13 +140,15 @@ app.get('/getRecipe', (req, res) => {
         str = str + '\"' + pull_result[i] + '\"' + ', ';
     }
     str = str + '\"' + pull_result[pull_result.length - 1] + '\"' + ")";
-    var urlreq = 'select * from recipes join pivot on pivot.recipes_id = recipes.id where recipes.id in ' + str;
+    var urlreq = 'select * from recipes where recipes.id in ' + str;
+    
     con.query(urlreq, function(err, result, fields){
         if (err) throw err;
         for (var j of result){
-            url_result.push([j.name, j.url, j.image]);
+            //push to reciesp_result array
+            url_result.push([j.url, j.image]);
         }
-        console.log(url_result);
+        console.log(recipes_result);
         res.send(url_result.toString());
     });  
 });
@@ -152,6 +160,16 @@ function base64_encode(file) {
     return new Buffer(bitmap).toString('base64');
 }
 
+function unique(arr){
+    unique_array = [];
+    for(let i = 0;i < arr.length; i++){
+        if(unique_array.indexOf(arr[i]) == -1){
+            unique_array.push(arr[i])
+        }
+    }
+    //return new array with no duplicae
+    return unique_array;
+}
 
 function processImg(path, res){
     const params = {
