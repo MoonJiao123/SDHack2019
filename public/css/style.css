@@ -73,6 +73,8 @@ body {
     transition: 2s 2.5s opacity, 1s 0s background-color;
     text-decoration: none;
     color: black;
+    line-height: 240%;
+    font-size: 120%;
 }
 
 #header-cta.fadeIn {
@@ -80,12 +82,16 @@ body {
     background-color: #FFc669;
 }
 
+
+/*
+
 .keyframe-test {
     height: 0;
     width: 0;
     background-color: #151515;
     animation: my-animation 2s 2500ms infinite alternate both;
 }
+*/
 
 @keyframes my-animation {
     from {
@@ -137,4 +143,9 @@ body {
 
 a:link {
     text-decoration: none!important;
+}
+
+.halfBtnBlock {
+    display: block;
+    width: 50%;
 }
