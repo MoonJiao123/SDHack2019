@@ -88,51 +88,51 @@
                             Protein
                         </span>
                 </div>
-                <div class="checkbox">
+                <div class="checkbox" value="egg">
                     <label>
-                    <input type="checkbox" value="">
+                    <input name="ingredient-check" type="checkbox" value="egg">
                     <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                     egg
                 </label>
                 </div>
-                <div class="checkbox">
+                <div class="checkbox" value="milk">
                     <label>
-                    <input type="checkbox" value="">
+                    <input name="ingredient-check" type="checkbox" value="milk">
                     <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                     milk
                 </label>
                 </div>
-                <div class="checkbox">
+                <div class="checkbox" value="fish">
                     <label>
-                    <input type="checkbox" value="">
+                    <input name="ingredient-check" type="checkbox" value="fish">
                     <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                     fish
                 </label>
                 </div>
-                <div class="checkbox">
+                <div class="checkbox" value="beef">
                     <label>
-                    <input type="checkbox" value="">
+                    <input name="ingredient-check" type="checkbox" value="beef">
                     <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                     beef
                 </label>
                 </div>
-                <div class="checkbox">
+                <div class="checkbox" value="chicken">
                     <label>
-                    <input type="checkbox" value="">
+                    <input name="ingredient-check" type="checkbox" value="chicken">
                     <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                     chicken
                 </label>
                 </div>
-                <div class="checkbox">
+                <div class="checkbox" value="tofu">
                     <label>
-                    <input type="checkbox" value="">
+                    <input name="ingredient-check" type="checkbox" value="tofu">
                     <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                     tofu
                 </label>
                 </div>
-                <div class="checkbox">
+                <div class="checkbox" value="pork">
                     <label>
-                    <input type="checkbox" value="">
+                    <input name="ingredient-check" type="checkbox" value="pork">
                     <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                     pork
                 </label>
@@ -147,77 +147,80 @@
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="">
+                        <input name="ingredient-check" type="checkbox" value="avocado">
                         <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                         avocado
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="">
+                        <input name="ingredient-check" type="checkbox" value="beans">
                         <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                         beans
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="">
+                        <input name="ingredient-check" type="checkbox" value="pepper">
                         <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                         pepper
                     </label>
                 </div>
-                <div class="checkbox">
+                <div class="checkbox" value="cauliflower">
                     <label>
-                        <input type="checkbox" value="">
+                        <input name="ingredient-check" type="checkbox" value="cauliflower">
                         <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                         cauliflower
                     </label>
                 </div>
-                <div class="checkbox">
+                <div class="checkbox" value="cabbage">
                     <label>
-                        <input type="checkbox" value="">
+                        <input name="ingredient-check" type="checkbox" value="cabbage">
                         <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                         cabbage
                     </label>
                 </div>
-                <div class="checkbox">
+                <div class="checkbox" value="lettuce">
                     <label>
-                        <input type="checkbox" value="">
+                        <input name="ingredient-check" type="checkbox" value="lettuce">
                         <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                         lettuce
                     </label>
                 </div>
-                <div class="checkbox">
+                <div class="checkbox" value="carrot">
                     <label>
-                        <input type="checkbox" value="">
+                        <input name="ingredient-check" type="checkbox" value="carrot">
                         <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                         carrot
                     </label>
                 </div>
-                <div class="checkbox">
+                <div class="checkbox" value="onion">
                     <label>
-                        <input type="checkbox" value="">
+                        <input name="ingredient-check" type="checkbox" value="onion">
                         <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                         onion
                     </label>
                 </div>
-                <div class="checkbox">
+                <div class="checkbox" value="spinash">
                     <label>
-                        <input type="checkbox" value="">
+                        <input name="ingredient-check" type="checkbox" value="spinash">
                         <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                         spinash
                     </label>
                 </div>
-                <div class="checkbox">
+                <div class="checkbox" value="tomato">
                     <label>
-                        <input type="checkbox" value="">
+                        <input name="ingredient-check" type="checkbox" value="tomato">
                         <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                         tomato
                     </label>
                 </div>
                 <div class="checkbox">
+                </div>
+                <div class="checkbox" value="broccoli">
+
                     <label>
-                        <input type="checkbox" value="">
+                        <input name="ingredient-check" type="checkbox" value="broccoli">
                         <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                         broccoli
                     </label>
@@ -263,6 +266,41 @@
                     <button v-on:click="submitMessage">Submit</button>
                 </div> -->
         <!--div class="row">
+                <form action="/insertData" method="POST">
+                    <p>Ingredients to Add</p>
+                    <input type="text" name="ingred" />
+                    <input type="submit" value="insert" />
+                </form>
+
+                <form action="/insertImage" method="POST" enctype="multipart/form-data">
+                    <p>Image to Add</p>
+                    <input type="file" name="filetoupload" />
+                    <input type="submit" value="submit" />
+                </form>
+
+                <form action="/generate" method="GET">
+                    <p>Generate the look up index of recipe</p>
+                    <input type="submit" value="generate" />
+                </form>
+
+                <form action="/getRecipe" method="GET">
+                    <p>Get the url of the recipe</p>
+                    <input type="submit" value="GetUrl" />
+                </form>
+
+                <form action="/count" method="GET">
+                    <p>Ingredients to Find How Many Exist in our Database</p>
+                    <input type="text" name="ingred" />
+                    <input type="submit" value="search" />
+                </form>
+        </div>
+        <div class="row">
+            <div class="form-check">
+                <label class="form-check-label">check</label>
+            </div>
+            </div-->
+
+        <div class="row">
             <form action="/insertData" method="POST">
                 <p>Ingredients to Add</p>
                 <input type="text" name="ingred" />
@@ -293,9 +331,10 @@
         </div>
         <div class="row">
             <div class="form-check">
-                <label class="form-check-label">check</label>
+                <button class="form-check-label" onclick="readCheckbox()">check</button>
             </div>
-        </div-->
+        </div>
+
 
 
         <div class="col-md-9">
@@ -369,6 +408,7 @@
 
     <!-- development version, includes helpful console warnings -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="../database.js"></script>
     <script>
         var app = new Vue({
             el: '#app',
