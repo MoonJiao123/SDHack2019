@@ -1,6 +1,6 @@
 .navbar-custom {
     color: #000000;
-    background-color: #fb7036;
+    background-color: #ffc669;
 }
 
 .white {
@@ -89,6 +89,8 @@ h1.white {
     color: rgb(255, 255, 255);
     font-size: 300%;
     display: inline-block;
+    font-weight: 650;
+    padding-left: 10px;
 }
 
 .sec {
@@ -152,4 +154,48 @@ div {
 
 .checkbox label input[type="checkbox"]:disabled+.cr {
     opacity: .5;
+}
+
+.color1 {
+    background-color: #f3e4cd;
+    width: 90%;
+}
+
+.title1 {
+    color: rgb(105, 60, 60);
+    font-size: 150%;
+    font-weight: 650;
+}
+
+.color2 {
+    background-color: #e4f3cd;
+    width: 90%;
+}
+
+.title2 {
+    color: rgb(91, 116, 66);
+    font-size: 150%;
+    font-weight: 650;
+}
+
+.image-container {
+    display: block;
+    min-height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.shadow {
+    -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .35));
+    filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .35));
+    /* Similar syntax to box-shadow */
+}
+
+.hero--bg {
+    position: absolute;
+    left: 0;
+    background-color: #fb7036;
+    width: 50vw;
+    height: 100vh;
 }

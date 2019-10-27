@@ -16,10 +16,13 @@
     <nav class="navbar navbar-custom">
         <!--a class="navbar-brand white" href="index.html">FOOD WASTE</a-->
         <div class="container">
-            <img class="icon" src="images/FoodFlatArt/pear.svg" />
-            <h1 class="white changeFont" href="index.html">REciPE 101.</h1>
+            <img class="icon shadow" src="images/FoodFlatArt/pear.svg" />
+            <h1 class="white changeFont shadow" href="index.html">REciPE 101.</h1>
         </div>
     </nav>
+
+
+
     <!--
         <div class="col">
             <div class="col">
@@ -28,7 +31,95 @@
         </div>
 -->
     <div class="container" id="app">
-        <div class="row">
+        <div class="col-md-3 no-float addPadding">
+            <div class="row">
+                <div class="container color1" style="width: 90%">
+                    <img class="smallicon shadow" style="margin: 5px" src="images/FoodFlatArt/meat.svg" />
+                    <span class="title1">
+                            Protein
+                        </span>
+                </div>
+                <div class="checkbox">
+                    <label>
+                    <input type="checkbox" value="">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    Chicken
+                </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                    <input type="checkbox" value="">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    Chicken
+                </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                    <input type="checkbox" value="">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    Chicken
+                </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                    <input type="checkbox" value="">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    Chicken
+                </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                    <input type="checkbox" value="">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    Chicken
+                </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="container color2" style="width: 90%">
+                    <img class="smallicon shadow" style="margin: 5px" src="images/FoodFlatArt/broccli.svg" />
+                    <span class="title2">
+                            Vegetable
+                        </span>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Chicken
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Chicken
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Chicken
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Chicken
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Chicken
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!--
             <div class="col-md-3 no-float">
                 <div class="row">
                     <li v-for="todo in todos">
@@ -49,13 +140,7 @@
                             Disabled checkbox
                         </label>
                     </div>
-                    <div class="checkbox">
-                        <label>
-                         <input type="checkbox" value="">
-                         <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
-                         Chicken
-                         </label>
-                    </div>
+                    
                     <div class="box md-checkbox">
                         <form action="/checkBox" method="POST">
 
@@ -104,119 +189,121 @@
                         <label class="form-check-label">check</label>
                     </div>
                 </div>
+-->
 
-            </div>
-            <div class="col-md-9 no-float">
+        <div class="col-md-9">
+            <div class="row">
 
+                <div class="col-sm-4 icon-slide-container shadow-sm addPadding">
+                    <a href="#">
+                        <!-- <img src="images/Recipe/eggBread.jpg" class="image shadow-sm rounded" title="test"> -->
+                        <div class="image-container image" style="background-image:url(images/Recipe/eggBread.jpg)">
 
-                <div class="row">
-                    <div class="col-lg-4 col-sm-6 col-12 addPadding" style="height: 100%">
-                        <div class="icon-slide-container shadow-sm">
-                            <a href="#">
-                                <img src="images/Recipe/eggBread.jpg" class="image shadow-sm rounded" title="test">
-                            </a>
                         </div>
+
                         <h4>TEST Text IN Here</h4>
                         <p class="marg">Test filling in for image process</p>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-12 addPadding" style="height: 100%">
-                        <div class="icon-slide-container">
-                            <a href="#">
-                                <img src="images/Recipe/eggCloud.jpg" class="img-responsive slide icon-slide-container image" title="test">
-                            </a>
-                        </div>
-                        <h4>TEST Text IN Here</h4>
-                        <p class="marg">Test filling in for image process</p>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-12 addPadding" style="height: 100%">
-                        <div class="icon-slide-container">
-                            <a href="#">
-                                <img src="images/Recipe/eggQuail.jpg" class="img-responsive slide icon-slide-container image" title="test">
-                            </a>
-                        </div>
-                        <h4>TEST Text IN Here</h4>
-                        <p class="marg">Test filling in for image process</p>
-                    </div>
-
-                    <div class="col-lg-4 col-sm-6 col-12 addPadding">
-                        <div class="icon-slide-container">
-                            <a href="#">
-                                <img src="images/Recipe/eggBacon.jpg" class="img-responsive slide icon-slide-container image" title="test">
-                            </a>
-                        </div>
-                        <h4>TEST Text IN Here</h4>
-                        <p class="marg">Test filling in for image process</p>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-12 addPadding">
-                        <div class="icon-slide-container">
-                            <a href="#">
-                                <img src="images/Recipe/eggStrip.jpg" class="img-responsive image" title="test">
-                            </a>
-                        </div>
-                        <h4>TEST Text IN Here</h4>
-                        <p class="marg">Test filling in for image process</p>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-12 addPadding">
-                        <div class="icon-slide-container">
-                            <a href="#">
-                                <img src="images/Recipe/eggTomato.jpg" class="img-responsive image slide icon-slide-container" title="test">
-                            </a>
-                        </div>
-                        <h4>TEST Text IN Here</h4>
-                        <p class="marg">Test filling in for image process</p>
-                    </div>
-
-
-
+                    </a>
                 </div>
+
+                <div class="col-sm-4 icon-slide-container addPadding">
+                    <a href="#">
+                        <div class="image-container image" style="background-image:url(images/Recipe/eggCloud.jpg)"></div>
+                        <!-- <img src="images/Recipe/eggCloud.jpg" class="img-responsive slide icon-slide-container image" title="test"> -->
+
+                        <h4>TEST Text IN Here</h4>
+                        <p class="marg">Test filling in for image process</p>
+                    </a>
+                </div>
+                <div class="col-sm-4 icon-slide-container addPadding">
+                    <a href="#">
+                        <div class="image-container image" style="background-image:url(images/Recipe/eggStrip.jpg)"></div>
+                        <!-- <img src="images/Recipe/eggStrip.jpg" class="img-responsive slide icon-slide-container image" title="test"> -->
+                        <h4>TEST Text IN Here</h4>
+                        <p class="marg">Test filling in for image process</p>
+                    </a>
+                </div>
+                <div class="col-sm-4 icon-slide-container addPadding">
+                    <a href="#">
+                        <div class="image-container image" style="background-image:url(images/Recipe/eggTomato.jpg)"></div>
+                        <!-- <img src="images/Recipe/eggTomato.jpg" class="img-responsive slide icon-slide-container image" title="test"> -->
+                        <h4>TEST Text IN Here</h4>
+                        <p class="marg">Test filling in for image process</p>
+                    </a>
+                </div>
+                <div class="col-sm-4 icon-slide-container addPadding">
+                    <a href="#">
+                        <div class="image-container image" style="background-image:url(images/Recipe/eggTuna.jpg)"></div>
+                        <!-- <img src="images/Recipe/eggTuna.jpg" class="img-responsive slide icon-slide-container image" title="test"> -->
+                        <h4>TEST Text IN Here</h4>
+                        <p class="marg">Test filling in for image process</p>
+                    </a>
+                </div>
+                <div class="col-sm-4 icon-slide-container addPadding">
+                    <a href="#">
+                        <div class="image-container image" style="background-image:url(images/Recipe/eggBacon.jpg)"></div>
+                        <!-- <img src="images/Recipe/eggBacon.jpg" class="img-responsive slide icon-slide-container image" title="test"> -->
+                        <h4>TEST Text IN Here</h4>
+                        <p class="marg">Test filling in for image process</p>
+                    </a>
+                </div>
+
+
+
             </div>
+
+
+
+
         </div>
+    </div>
+    </div>
 
-        <!-- development version, includes helpful console warnings -->
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script>
-            var app = new Vue({
-                el: '#app',
-                data: {
-                    message: 'Hello Vue!',
-                    seen: false,
-                    todos: [{
-                        text: 'Learn JavaScript',
-                        checked: false
-                    }, {
-                        text: 'Learn Vue',
-                        checked: false
-                    }, {
-                        text: 'Build something awesome',
-                        checked: false
-                    }]
-                },
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!',
+                seen: false,
+                todos: [{
+                    text: 'Learn JavaScript',
+                    checked: false
+                }, {
+                    text: 'Learn Vue',
+                    checked: false
+                }, {
+                    text: 'Build something awesome',
+                    checked: false
+                }]
+            },
+            /*
+            computed: {
                 /*
-                computed: {
-                    /*
-                    iframeUrl: () => {
-                        console.log(this.todos)
-                        if(!this.todos){
-                            return '';
-                        }
-                        return this.todos.filter((todo) => { 
-                            return todo.checked == false;
-                        });
+                iframeUrl: () => {
+                    console.log(this.todos)
+                    if(!this.todos){
+                        return '';
                     }
-                    todo() {
-                        return this.todos.filter((todo) => {
-                            return todo.checked == flase;
-                        }) 
-                    }
-                },*/
-                methods: {
-                    submitMessage: function() {
-
-
-                    }
+                    return this.todos.filter((todo) => { 
+                        return todo.checked == false;
+                    });
                 }
-            })
-        </script>
+                todo() {
+                    return this.todos.filter((todo) => {
+                        return todo.checked == flase;
+                    }) 
+                }
+            },*/
+            methods: {
+                submitMessage: function() {
+
+
+                }
+            }
+        })
+    </script>
 </body>
 
 
