@@ -24,3 +24,23 @@ function select() {
 
    });
 }
+
+function insertImageSubmit() {
+    var data = new FormData();
+    jQuery.each(jQuery('#file')[0].files, function(i, file) {
+        data.append('filetoupload', file);
+    });
+
+    jQuery.ajax({
+        url: '/insertImage',
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        type: 'POST',
+        success: function(data){
+            console.log(data);
+        }
+    });
+    
+}

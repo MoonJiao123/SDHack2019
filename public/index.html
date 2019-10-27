@@ -307,10 +307,10 @@
                 <input type="submit" value="insert" />
             </form>
 
-            <form action="/insertImage" method="POST" enctype="multipart/form-data">
+            <form action='insertImage' method="POST", enctype="multipart/form-data">
                 <p>Image to Add</p>
-                <input type="file" name="filetoupload" />
-                <input type="submit" value="submit" />
+                <input type="file" id="file" name="filetoupload" />
+                
             </form>
 
             <form action="/generate" method="POST">
@@ -331,14 +331,18 @@
         <div class="row">
             <div class="form-check">
                 <button class="form-check-label" onclick="readCheckbox()">check</button>
+    
             </div>
         </div>
 
                 <div class="row">
                     <div class="form-check">
                         <button class="form-check-label" onclick="select()">check</button>
+
+                        <button class="form-check-label" onclick="insertImageSubmit()">submitImage</button>
                     </div>
                 </div>
+
 
 
     <div class="col-md-9">

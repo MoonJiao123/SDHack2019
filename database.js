@@ -103,7 +103,7 @@ function processImg(path, res){
 
         img_text, expireIn5d = formatImgText(img_text);
         console.log(expiredIn5d);
-        res.send(img_text);
+        res.json(img_text);
     });
 }
 
