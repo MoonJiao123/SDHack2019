@@ -1,3 +1,8 @@
+// List of ingredients, pulled_idx, url
+const p = ['Egg', 'Milk', 'Fish', 'Beef', 'Chicken', 'Tofu', 'Pork'];
+const v = [ 'Avocado',  'Beans', 'Pepper', 'Cauliflower',
+    'Cabbage', 'Lettuce', 'Carrot', 'Onion', 'Spinash', 'Tomato', 'Broccoli'];
+
 // Read Checkbox @Dillon
 function select() {
     var ingredients = []
@@ -16,6 +21,8 @@ function select() {
             ingredient: ingredients
         },
         success: function(data) {
+
+            $('span[class="expFlag"]').text("");
             //for each loop
             // console.log(data[0].name);
             $("#dymhtml").html("");
@@ -65,7 +72,7 @@ function insertImageSubmit() {
         type: 'POST',
         timeout: 10000,
         success: function(data) {
-
+            $('input[type="checkbox"]').prop('checked', false);
             //for each loop
             // console.log(data[0].name);
             var ingreImg =[];
@@ -77,7 +84,14 @@ function insertImageSubmit() {
             var expireIn10d = data.exp;
             console.log(expireIn10d);
             var d = data.k;
+            $('span[class="expFlag"]').text("");
+
+            for (var e of expireIn10d){   
+                $('div[value=\"' + e.ing +'\"]').find('span[class="expFlag"]').text(e.days + " days left");
+            }
+
             $("#dymhtml").html("");
+            
             for (var i = 0; i < d.length && i < 9; i++) {
                 var recipe = d[i];
                 console.log(recipe);
