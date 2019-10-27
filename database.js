@@ -101,10 +101,22 @@ function processImg(path, res){
             
         }            // successful response
 
-        img_text, expireIn5d = formatImgText(img_text);
+        img_text, expiredIn5d = formatImgText(img_text);
         console.log(expiredIn5d);
-        res.json(img_text);
-    });
+        var ingredients = expiredIn5d;
+        var str = '(';
+        for (var i = 0; i < ingredients.length - 1; i++){
+            str = str + '\"' + ingredients[i] + '\"' + ', ';
+        }
+        str = str + '\"' + ingredients[ingredients.length - 1] + '\"' + ")";
+        var queryreq = 'select recipes.name, recipes.url, recipes.image, count(*) as freq from ingredients join pivot on pivot.ingredients_id = ingredients.id  join recipes on pivot.recipes_id = recipes.id where ingredients.name in ' + str + ' group by recipes.name, recipes.url, recipes.image order by freq desc ';
+
+        con.query(queryreq, function(err, result, fields){
+
+            console.log(result);
+            res.json(result);
+        });
+    });    
 }
 
 function formatImgText(textInImg){

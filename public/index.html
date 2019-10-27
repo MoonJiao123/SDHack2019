@@ -301,39 +301,21 @@
             </div-->
 
         <div class="row">
-            <form action="/insertData" method="POST">
-                <p>Ingredients to Add</p>
-                <input type="text" name="ingred" />
-                <input type="submit" value="insert" />
-            </form>
-
-            <form action='insertImage' method="POST", enctype="multipart/form-data">
-                <p>Image to Add</p>
-                <input type="file" id="file" name="filetoupload" />
-                
-            </form>
 
             <form action="/generate" method="POST">
                 <p>Generate the look up index of recipe</p>
                 <input type="submit" value="generate" />
             </form>
 
-            <form action="/getRecipe" method="GET">
-                <p>Get the url of the recipe</p>
-                <input type="submit" value="GetUrl" />
-            </form>
 
-            <form action="/count" method="GET">
-                <p>Ingredients to Find How Many Exist in our Database</p>
-                <input type="submit" value="search" />
-            </form>
         </div>
        
 
                 <div class="row">
                     <div class="form-check">
                         <button class="form-check-label" onclick="select()">check</button>
-
+                        <p> Or add an image of Receipt (Prioritize on food close to expiration)</p>
+                        <input type="file" id="file" name="filetoupload" />
                         <button class="form-check-label" onclick="insertImageSubmit()">submitImage</button>
                     </div>
                 </div>
