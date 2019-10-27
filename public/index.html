@@ -335,6 +335,17 @@
             </div>
         </div>
 
+                    <form action="/count" method="GET">
+                        <p>Ingredients to Find How Many Exist in our Database</p>
+                        <input type="text" name="ingred" />
+                        <input type="submit" value="search" />
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="form-check">
+                        <button class="form-check-label" onclick="select()">check</button>
+                    </div>
+                </div>
 
 
         <div class="col-md-9">
@@ -411,6 +422,10 @@
     <!-- development version, includes helpful console warnings -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="functions.js"></script>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+
+    </script>
     <script>
         var app = new Vue({
             el: '#app',
