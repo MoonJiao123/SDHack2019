@@ -55,12 +55,17 @@ con.connect(function (err) {
 
 
 // List of ingredients, pulled_idx, url
-const ingredients = [];
-const checked = [];
+var ingredients = [];
+var checked = [];
 var newpath;
-const pull_result = [];
-const url_result = [];
+var pull_result = [];
+var url_result = [];
 var img_text = [];
+var urgent5d = [];
+var urgent5d_id = [];
+var rec_id_dicts;
+const all_ingre =  ['egg','milk','avocado','fish','beef','chicken','tofu','pork','beans','pepper','cauliflower',
+'rice','cabbage','lettuce','carrot','onion','spinash','potato','tomato','broccoli'];
 
 // Create an S3 client
 var s3 = new AWS.S3();
@@ -69,7 +74,7 @@ var s3 = new AWS.S3();
 // Inserting an ice cream
 app.post('/insertData', (req, res) => {
     const params = req.body;
-    ingredients.push(params.ingred);
+    ingredients.push(params.ingred.toLowerCase());
     res.redirect('/');
 });
 
@@ -97,6 +102,7 @@ app.get('/getCheck', (req, res) => {
 });
 
 app.get('/generate', (req, res) => {
+    ingredients = ingredients.filter(onlyUnique);
     var str = '(';
     for (var i = 0; i < ingredients.length - 1; i++){
         str = str + '\"' + ingredients[i] + '\"' + ', ';
@@ -107,8 +113,13 @@ app.get('/generate', (req, res) => {
         if (err) throw err;
         for (var j of result){
             pull_result.push(j.recipes_id);
+            if (j.name in urgent5d){
+                urgent5d_id.push(j.recipes_id);
+            }
         }
         console.log(pull_result);
+        rec_id_dicts = recipes_id_dic(pull_result)
+        console.log(rec_id_dicts);
         res.send(pull_result.toString());
     });
 });
@@ -118,14 +129,7 @@ app.get('/generate', (req, res) => {
 //       exists to the response.
 //       Use req.param.flavor to grab the flavor parameter.
 app.get('/count', (req, res) => {
-    const ingred = req.query.ingred;
-    let count = 0;
-    for (let i = 0; i < ingredients.length; i++) {
-        if (ingredients[i] == ingred) {
-            count++;
-        }
-    }
-    res.json(count);
+    res.send(urgent5d.toString());
 });
 
 app.get('/getRecipe', (req, res) => {
@@ -134,11 +138,11 @@ app.get('/getRecipe', (req, res) => {
         str = str + '\"' + pull_result[i] + '\"' + ', ';
     }
     str = str + '\"' + pull_result[pull_result.length - 1] + '\"' + ")";
-    var urlreq = 'select * from recipes join pivot on pivot.recipes_id = recipes.id where recipes.id in ' + str;
+    var urlreq = 'select * from recipes where recipes.id in ' + str;
     con.query(urlreq, function(err, result, fields){
         if (err) throw err;
         for (var j of result){
-            url_result.push([j.name, j.url, j.image]);
+                url_result.push([j.name, j.url, j.image]);
         }
         console.log(url_result);
         res.send(url_result.toString());
@@ -152,6 +156,9 @@ function base64_encode(file) {
     return new Buffer(bitmap).toString('base64');
 }
 
+function onlyUnique(value, index, self) { 
+    return self.indexOf(value) === index;
+}
 
 function processImg(path, res){
     const params = {
@@ -166,18 +173,41 @@ function processImg(path, res){
             for (var d of data.TextDetections){
                 if (d.Type == "LINE"){
                     if (d.DetectedText.substr(d.DetectedText.length-1).match(/X/g)){
-                        img_text.push(d.DetectedText);
+                        img_text.push(d.DetectedText.toLowerCase().split(" "));
                     }
                 }
             }
             
         }            // successful response
 
-        res.send(img_text);
-
+        
+        res.send(formatImgText());
     });
 
+
 }
+
+function formatImgText(){
+    var formatted = [];
+    for (var s of img_text){
+        if (all_ingre.includes(s[0])){
+            var dt;
+            if (s[1].length == 6){
+                dt = Date.parse('20' + s[1].substr(4,2) + "-" + s[1].substr(0,2) + "-" + s[1].substr(2,2));
+            } else {
+                dt = -1;
+            }
+            if (dt>0 && dt - Date.parse(new Date) < 432000000){
+                urgent5d.push(s[0]);
+            }
+            
+            formatted.push(s[0]);
+        }
+    }
+    img_text = formatted;
+    return img_text;
+}
+
 
 // rekognition.compareFaces(params, function (err, data) {
 //   if (err) console.log(err, err.stack); // an error occurred
