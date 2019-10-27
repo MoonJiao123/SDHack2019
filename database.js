@@ -88,7 +88,7 @@ function processImg(path, res) {
     };
     rekognition.detectText(params, function(err, data) {
         var img_text = [];
-        var expiredIn5d = [];
+        var expiredIn10d = [];
         if (err) console.log(err, err.stack); // an error occurred
         else {
             console.log(data);
@@ -102,30 +102,50 @@ function processImg(path, res) {
 
         } // successful response
 
-        img_text, expireIn5d = formatImgText(img_text);
-        console.log(expiredIn5d);
-        res.json(img_text);
-    });
+        expiredIn10d = formatImgText(img_text);
+        console.log(expiredIn10d);
+        console.log(img_text);
+        var ingredients = [];
+        for (var i = 0; i < expiredIn10d.length; i++){
+            ingredients.push(expiredIn10d[i].ing);
+        }
+        console.log(ingredients);
+        var str = '(';
+        for (var i = 0; i < ingredients.length - 1; i++){
+            str = str + '\"' + ingredients[i] + '\"' + ', ';
+        }
+        str = str + '\"' + ingredients[ingredients.length - 1] + '\"' + ")";
+        var queryreq = 'select recipes.name, recipes.url, recipes.image, count(*) as freq from ingredients join pivot on pivot.ingredients_id = ingredients.id  join recipes on pivot.recipes_id = recipes.id where ingredients.name in ' + str + ' group by recipes.name, recipes.url, recipes.image order by freq desc ';
+
+        con.query(queryreq, function(err, result, fields){
+
+            //console.log(result);
+            res.json({ingreL : img_text, exp : expiredIn10d, k : result});
+        });
+    });    
 }
 
 function formatImgText(textInImg) {
-    var formatted = [];
-    var urgent5d = [];
-    for (var s of textInImg) {
-        if (all_ingre.includes(s[0])) {
+    var day = 86400000;
+    var urgent = [];
+    for (var s of textInImg){
+        if (all_ingre.includes(s[0])){
             var dt;
             if (s[1].length == 6) {
                 dt = Date.parse('20' + s[1].substr(4, 2) + "-" + s[1].substr(0, 2) + "-" + s[1].substr(2, 2));
             } else {
                 dt = -1;
             }
-            if (dt > 0 && dt - Date.parse(new Date) < 432000000) { // Five Days
-                urgent5d.push(s[0]);
+            var inserted = false;
+            for (var i = 1; i < 11; i++){
+                if (dt>0 &&  dt - Date.parse(new Date) < day * i && inserted == false ){ // Ten Days
+                    urgent.push({ ing: s[0], days : i});
+                    inserted = true;
+                }
             }
-            formatted.push(s[0]);
         }
     }
-    return formatted, urgent5d;
+    return urgent;
 }
 
 // Gets all the ice creams in the array
