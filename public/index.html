@@ -13,16 +13,63 @@
 
 <body class="background-color">
 
-    <nav class="navbar navbar-custom">
-        <!--a class="navbar-brand white" href="index.html">FOOD WASTE</a-->
-        <div class="container">
+    <!--div class="mycontainer" style="width:10%">
+        <a href="front.html">
+            <img class="icon shadow" style="margin:10px" src="images/FoodFlatArt/pear.svg" />
+        </a>
+    </div-->
+    <div class="">
+        <!--nav class="navbar navbar-custom">
+            <a class="navbar-brand white" href="index.html">FOOD WASTE</a>
+            <div class="container">
+
+                <h1 class="white changeFont shadow" href="index.html">REciPE 101.</h1>
+                <h3 style="display:inline">Contact US</h3>
+                <img class="smallicon shadow" style="position:relatirve; right: 15px" src="images/Icon/search.svg" />
+            </div>
+        </nav-->
+
+
+        <nav class=" navbar-custom" style="width: 100vw">
             <a href="front.html">
-                <img class="icon shadow" src="images/FoodFlatArt/pear.svg" />
+                <img class="icon shadow" style="margin:10px" src="images/FoodFlatArt/pear.svg" />
             </a>
             <h1 class="white changeFont shadow" href="index.html">REciPE 101.</h1>
-        </div>
-    </nav>
+            <!--button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                      </div>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                  </ul-->
 
+            <form class="form-inline my-2 my-lg-0" style="float:right; padding-top:20px; padding-right: 5px">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <img class="smallRighticon shadow" style="" src="images/Icon/search.svg" />
+                <!--button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button-->
+            </form>
+    </div>
+    </nav>
 
 
     <!--
@@ -32,7 +79,7 @@
             </div>
         </div>
 -->
-    <div class="container" id="app">
+    <div class="mycontainer" id="app">
         <div class="col-md-3 no-float addPadding">
             <div class="row">
                 <div class="container color1" style="width: 90%">
@@ -167,8 +214,11 @@
                         <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                         tomato
                     </label>
-                </div>                
+                </div>
+                <div class="checkbox">
+                </div>
                 <div class="checkbox" value="broccoli">
+
                     <label>
                         <input name="ingredient-check" type="checkbox" value="broccoli">
                         <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
@@ -177,10 +227,10 @@
                 </div>
 
             </div>
-            
+
         </div>
-        
-            <!-- <div class="col-md-3 no-float">
+
+        <!-- <div class="col-md-3 no-float">
                 <div class="row">
                     <li v-for="todo in todos">
                         <div class="box">
@@ -215,29 +265,75 @@
 
                     <button v-on:click="submitMessage">Submit</button>
                 </div> -->
-                <div class="row">
-                    <form action="/insertData" method="POST">
-                        <p>Ingredients to Add</p>
-                        <input type="text" name="ingred" />
-                        <input type="submit" value="insert" />
-                    </form>
+        <!--div class="row">
+                <form action="/insertData" method="POST">
+                    <p>Ingredients to Add</p>
+                    <input type="text" name="ingred" />
+                    <input type="submit" value="insert" />
+                </form>
 
-                    <form action="/insertImage" method="POST" enctype="multipart/form-data">
-                        <p>Image to Add</p>
-                        <input type="file" name="filetoupload" />
-                        <input type="submit" value="submit" />
-                    </form>
+                <form action="/insertImage" method="POST" enctype="multipart/form-data">
+                    <p>Image to Add</p>
+                    <input type="file" name="filetoupload" />
+                    <input type="submit" value="submit" />
+                </form>
 
-                    <form action="/generate" method="GET">
-                        <p>Generate the look up index of recipe</p>
-                    
-                        <input type="submit" value="generate" />
-                    </form>
+                <form action="/generate" method="GET">
+                    <p>Generate the look up index of recipe</p>
+                    <input type="submit" value="generate" />
+                </form>
 
-                    <form action="/getRecipe" method="GET">
-                        <p>Get the url of the recipe</p>
-                        <input type="submit" value="GetUrl" />
-                    </form>
+                <form action="/getRecipe" method="GET">
+                    <p>Get the url of the recipe</p>
+                    <input type="submit" value="GetUrl" />
+                </form>
+
+                <form action="/count" method="GET">
+                    <p>Ingredients to Find How Many Exist in our Database</p>
+                    <input type="text" name="ingred" />
+                    <input type="submit" value="search" />
+                </form>
+        </div>
+        <div class="row">
+            <div class="form-check">
+                <label class="form-check-label">check</label>
+            </div>
+            </div-->
+
+        <div class="row">
+            <form action="/insertData" method="POST">
+                <p>Ingredients to Add</p>
+                <input type="text" name="ingred" />
+                <input type="submit" value="insert" />
+            </form>
+
+            <form action="/insertImage" method="POST" enctype="multipart/form-data">
+                <p>Image to Add</p>
+                <input type="file" name="filetoupload" />
+                <input type="submit" value="submit" />
+            </form>
+
+            <form action="/generate" method="GET">
+                <p>Generate the look up index of recipe</p>
+                <input type="submit" value="generate" />
+            </form>
+
+            <form action="/getRecipe" method="GET">
+                <p>Get the url of the recipe</p>
+                <input type="submit" value="GetUrl" />
+            </form>
+
+            <form action="/count" method="GET">
+                <p>Ingredients to Find How Many Exist in our Database</p>
+                <input type="text" name="ingred" />
+                <input type="submit" value="search" />
+            </form>
+        </div>
+        <div class="row">
+            <div class="form-check">
+                <button class="form-check-label" onclick="readCheckbox()">check</button>
+            </div>
+        </div>
 
                     <form action="/count" method="GET">
                         <p>Ingredients to Find How Many Exist in our Database</p>
@@ -247,7 +343,7 @@
                 </div>
                 <div class="row">
                     <div class="form-check">
-                        <button class="form-check-label" onclick="readCheckbox()">check</button>
+                        <button class="form-check-label" onclick="select()">check</button>
                     </div>
                 </div>
 
@@ -255,7 +351,7 @@
         <div class="col-md-9">
             <div class="row">
 
-                <div class="col-sm-4 icon-slide-container shadow-sm addPadding">
+                <div class="col-lg-4 col-md-6 col-sm-12 icon-slide-container shadow-sm addPadding">
                     <a href="#">
                         <!-- <img src="images/Recipe/eggBread.jpg" class="image shadow-sm rounded" title="test"> -->
                         <div class="image-container image" style="background-image:url(images/Recipe/eggBread.jpg)">
@@ -267,7 +363,7 @@
                     </a>
                 </div>
 
-                <div class="col-sm-4 icon-slide-container addPadding">
+                <div class="col-lg-4 col-md-6 col-sm-12 icon-slide-container addPadding">
                     <a href="#">
                         <div class="image-container image" style="background-image:url(images/Recipe/eggCloud.jpg)"></div>
                         <!-- <img src="images/Recipe/eggCloud.jpg" class="img-responsive slide icon-slide-container image" title="test"> -->
@@ -276,7 +372,7 @@
                         <p class="marg">Test filling in for image process</p>
                     </a>
                 </div>
-                <div class="col-sm-4 icon-slide-container addPadding">
+                <div class="col-lg-4 col-md-6 col-sm-12 icon-slide-container addPadding">
                     <a href="#">
                         <div class="image-container image" style="background-image:url(images/Recipe/eggStrip.jpg)"></div>
                         <!-- <img src="images/Recipe/eggStrip.jpg" class="img-responsive slide icon-slide-container image" title="test"> -->
@@ -284,7 +380,7 @@
                         <p class="marg">Test filling in for image process</p>
                     </a>
                 </div>
-                <div class="col-sm-4 icon-slide-container addPadding">
+                <div class="col-lg-4 col-md-6 col-sm-12 icon-slide-container addPadding">
                     <a href="#">
                         <div class="image-container image" style="background-image:url(images/Recipe/eggTomato.jpg)"></div>
                         <!-- <img src="images/Recipe/eggTomato.jpg" class="img-responsive slide icon-slide-container image" title="test"> -->
@@ -292,7 +388,7 @@
                         <p class="marg">Test filling in for image process</p>
                     </a>
                 </div>
-                <div class="col-sm-4 icon-slide-container addPadding">
+                <div class="col-lg-4 col-md-6 col-sm-12 icon-slide-container addPadding">
                     <a href="#">
                         <div class="image-container image" style="background-image:url(images/Recipe/eggTuna.jpg)"></div>
                         <!-- <img src="images/Recipe/eggTuna.jpg" class="img-responsive slide icon-slide-container image" title="test"> -->
@@ -300,7 +396,7 @@
                         <p class="marg">Test filling in for image process</p>
                     </a>
                 </div>
-                <div class="col-sm-4 icon-slide-container addPadding">
+                <div class="col-lg-4 col-md-6 col-sm-12 icon-slide-container addPadding">
                     <a href="#">
                         <div class="image-container image" style="background-image:url(images/Recipe/eggBacon.jpg)"></div>
                         <!-- <img src="images/Recipe/eggBacon.jpg" class="img-responsive slide icon-slide-container image" title="test"> -->
@@ -319,10 +415,17 @@
         </div>
     </div>
     </div>
+    </div>
 
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!-- development version, includes helpful console warnings -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="../database.js"></script>
+    <script src="functions.js"></script>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+
+    </script>
     <script>
         var app = new Vue({
             el: '#app',
@@ -367,6 +470,7 @@
         })
     </script>
 </body>
+
 
 
 
