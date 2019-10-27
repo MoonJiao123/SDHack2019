@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> FOOD WASTE </title>
+    <link type="text/css" rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="js/scriptIndex.js"></script>
+</head>
+
+<body class="background-color">
+
+    <!--div class="mycontainer" style="width:10%">
+        <a href="front.html">
+            <img class="icon shadow" style="margin:10px" src="images/FoodFlatArt/pear.svg" />
+        </a>
+    </div-->
+    <div class="hidden">
+        <!--nav class="navbar navbar-custom">
+            <a class="navbar-brand white" href="index.html">FOOD WASTE</a>
+            <div class="container">
+
+                <h1 class="white changeFont shadow" href="index.html">REciPE 101.</h1>
+                <h3 style="display:inline">Contact US</h3>
+                <img class="smallicon shadow" style="position:relatirve; right: 15px" src="images/Icon/search.svg" />
+            </div>
+        </nav-->
+
+
+        <nav class=" navbar-custom" style="width: 100vw">
+            <a href="index.html">
+                <img class="icon shadow" style="margin-left:50px; max-resolution: bottom 10px;" src="images/FoodFlatArt/pear.svg" />
+            </a>
+            <h1 class="white changeFont shadow" href="index.html">REciPE 101.</h1>
+            <!--button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                      </div>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                  </ul-->
+
+            <form class="form-inline my-2 my-lg-0" style="float:right; padding-top: 30px; padding-right: 80px">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search Recipe" aria-label="Search">
+                <img class="smallRighticon shadow" style="" src="images/Icon/search.svg" />
+                <!--button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button-->
+            </form>
+    </div>
+    </nav>
+
+
+    <!--
+        <div class="col">
+            <div class="col">
+                <a href="/getData"> View All Flavors </a>
+            </div>
+        </div>
+-->
+    <div class="mycontainer hidden" id="app">
+
+
+        <div class="col-md-3 no-float bottomPadding">
+
+            <div class="row">
+
+                <!--div class="form-check">
+                    <div class="col-md-6 bottomPadding">
+                        <button class="btn" onclick="select()">check</button>
+                    </div>
+                    <div class="col-md-6 bottomPadding">
+                        <button class="btn" onclick="insertImageSubmit()">submitImage</button>
+                    </div>
+                </div-->
+
+                <div class="form-check">
+                    <button class="btn col-md-3 " onclick="select()">check</button>
+
+
+                    <input class="btn col-md-6 bottomPadding" type="file" name="filetoupload" id="file" />
+
+
+
+                    <button class="btn col-md-3" onclick="insertImageSubmit()">Submit</button>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class=" color1" style="width: 100%">
+                    <img class="smallicon shadow" style="margin: 5px" src="images/FoodFlatArt/meat.svg" />
+                    <span class="title1">
+                            Protein
+                        </span>
+                </div>
+                <div class="checkbox" value="egg">
+                    <label>
+                    <input name="ingredient-check" type="checkbox" value="egg">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    Egg
+                    <span class="expFlag"></span>
+                </label>
+                </div>
+                <div class="checkbox" value="milk">
+                    <label>
+                    <input name="ingredient-check" type="checkbox" value="milk">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    Milk
+                    <span class="expFlag"></span>
+                </label>
+                </div>
+                <div class="checkbox" value="fish">
+                    <label>
+                    <input name="ingredient-check" type="checkbox" value="fish">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    Fish
+                    <span class="expFlag"></span>
+                </label>
+                </div>
+                <div class="checkbox" value="beef">
+                    <label>
+                    <input name="ingredient-check" type="checkbox" value="beef">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    Beef
+                    <span class="expFlag"></span>
+                </label>
+                </div>
+                <div class="checkbox" value="chicken">
+                    <label>
+                    <input name="ingredient-check" type="checkbox" value="chicken">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    Chicken
+                    <span class="expFlag"></span>
+                </label>
+                </div>
+                <div class="checkbox" value="tofu">
+                    <label>
+                    <input name="ingredient-check" type="checkbox" value="tofu">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    Tofu
+                    <span class="expFlag"></span>
+                </label>
+                </div>
+                <div class="checkbox" value="pork">
+                    <label>
+                    <input name="ingredient-check" type="checkbox" value="pork">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    Pork
+                    <span class="expFlag"></span>
+                </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="container color2" style="width: 100%">
+                    <img class="smallicon shadow" style="margin: 5px" src="images/FoodFlatArt/broccli.svg" />
+                    <span class="title2">
+                            Vegetable
+                        </span>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input name="ingredient-check" type="checkbox" value="avocado">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Avocado
+                        <span class="expFlag"></span>
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input name="ingredient-check" type="checkbox" value="beans">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Beans
+                        <span class="expFlag"></span>
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input name="ingredient-check" type="checkbox" value="pepper">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Pepper
+                        <span class="expFlag"></span>
+                    </label>
+                </div>
+                <div class="checkbox" value="cauliflower">
+                    <label>
+                        <input name="ingredient-check" type="checkbox" value="cauliflower">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Cauliflower
+                        <span class="expFlag"></span>
+                    </label>
+                </div>
+                <div class="checkbox" value="cabbage">
+                    <label>
+                        <input name="ingredient-check" type="checkbox" value="cabbage">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Cabbage
+                        <span class="expFlag"></span>
+                    </label>
+                </div>
+                <div class="checkbox" value="lettuce">
+                    <label>
+                        <input name="ingredient-check" type="checkbox" value="lettuce">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Lettuce
+                        <span class="expFlag"></span>
+                    </label>
+                </div>
+                <div class="checkbox" value="carrot">
+                    <label>
+                        <input name="ingredient-check" type="checkbox" value="carrot">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Carrot
+                        <span class="expFlag"></span>
+                    </label>
+                </div>
+                <div class="checkbox" value="onion">
+                    <label>
+                        <input name="ingredient-check" type="checkbox" value="onion">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Onion
+                        <span class="expFlag"></span>
+                    </label>
+                </div>
+                <div class="checkbox" value="spinach">
+                    <label>
+                        <input name="ingredient-check" type="checkbox" value="spinach">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Spinach
+                        <span class="expFlag"></span>
+                    </label>
+                </div>
+                <div class="checkbox" value="tomato">
+                    <label>
+                        <input name="ingredient-check" type="checkbox" value="tomato">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Tomato
+                        <span class="expFlag"></span>
+                    </label>
+                </div>
+                <div class="checkbox">
+                </div>
+                <div class="checkbox" value="broccoli">
+
+                    <label>
+                        <input name="ingredient-check" type="checkbox" value="broccoli">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Broccoli
+                        <span class="expFlag"></span>
+                    </label>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- <div class="col-md-3 no-float">
+                <div class="row">
+                    <li v-for="todo in todos">
+                        <div class="box">
+                            <input class="form-check-input" type="checkbox" v-model="todo.checked">
+                            <img src="images/FoodFlatArt/broccli.svg" class="smallicon" title="test"> {{ todo.checked }} {{ todo.text }}
+                        </div>
+                    </li>
+                    <div action="/" class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Default {{ message }} {{ seen }}
+                        </label>
+                    </div>
+                    <div class="form-check" v-if="seen">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
+                        <label class="form-check-label" for="defaultCheck2">
+                            Disabled checkbox
+                        </label>
+                    </div>
+                    
+                    <div class="box md-checkbox">
+                        <form action="/checkBox" method="POST">
+
+                            <input class="form-check-input" type="checkbox" name="ingredientChecked" value="ingredientName"> iingredientName
+                            </input>
+                    </div>
+
+                    <input type="submit" value="insert" />
+                    </form>
+
+
+
+                    <button v-on:click="submitMessage">Submit</button>
+                </div> -->
+        <!--div class="row">
+                <form action="/insertData" method="POST">
+                    <p>Ingredients to Add</p>
+                    <input type="text" name="ingred" />
+                    <input type="submit" value="insert" />
+                </form>
+
+                <form action="/insertImage" method="POST" enctype="multipart/form-data">
+                    <p>Image to Add</p>
+                    <input type="file" name="filetoupload" />
+                    <input type="submit" value="submit" />
+                </form>
+
+                <form action="/generate" method="GET">
+                    <p>Generate the look up index of recipe</p>
+                    <input type="submit" value="generate" />
+                </form>
+
+                <form action="/getRecipe" method="GET">
+                    <p>Get the url of the recipe</p>
+                    <input type="submit" value="GetUrl" />
+                </form>
+
+                <form action="/count" method="GET">
+                    <p>Ingredients to Find How Many Exist in our Database</p>
+                    <input type="text" name="ingred" />
+                    <input type="submit" value="search" />
+                </form>
+        </div>
+        <div class="row">
+            <div class="form-check">
+                <label class="form-check-label">check</label>
+            </div>
+            </div-->
+
+
+
+
+
+        <div class="col-md-9">
+            <div class="row" id="dymhtml">
+
+                <div class="col-lg-4 col-md-6 col-sm-12 icon-slide-container shadow-sm addPadding">
+                    <a href="#">
+
+                        <div class="image-container image" style="background-image:url(images/egg.jpg)">
+
+                        </div>
+
+                        <h4 class="limitLine">Recipe To Be Load</h4>
+
+                    </a>
+                </div>
+
+                <!--div class="col-lg-4 col-md-6 col-sm-12 icon-slide-container addPadding">
+                <a href="#">
+                    <div class="image-container image" style="background-image:url(images/Recipe/eggCloud.jpg)"></div>
+                    <-- <img src="images/Recipe/eggCloud.jpg" class="img-responsive slide icon-slide-container image" title="test"> >
+
+                    <h4>TEST Text IN Here</h4>
+                    <p class="marg">Test filling in for image process</p>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 icon-slide-container addPadding">
+                <a href="#">
+                    <div class="image-container image" style="background-image:url(images/Recipe/eggStrip.jpg)"></div>
+                    <-- <img src="images/Recipe/eggStrip.jpg" class="img-responsive slide icon-slide-container image" title="test"> >
+                    <h4>TEST Text IN Here</h4>
+                    <p class="marg">Test filling in for image process</p>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 icon-slide-container addPadding">
+                <a href="#">
+                    <div class="image-container image" style="background-image:url(images/Recipe/eggTomato.jpg)"></div>
+                    <-- <img src="images/Recipe/eggTomato.jpg" class="img-responsive slide icon-slide-container image" title="test"> >
+                    <h4>TEST Text IN Here</h4>
+                    <p class="marg">Test filling in for image process</p>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 icon-slide-container addPadding">
+                <a href="#">
+                    <div class="image-container image" style="background-image:url(images/Recipe/eggTuna.jpg)"></div>
+                    <-- <img src="images/Recipe/eggTuna.jpg" class="img-responsive slide icon-slide-container image" title="test">->
+                    <h4>TEST Text IN Here</h4>
+                    <p class="marg">Test filling in for image process</p>
+                </a>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 icon-slide-container addPadding">
+                <a href="#">
+                    <div class="image-container image" style="background-image:url(images/Recipe/eggBacon.jpg)"></div>
+                    < src="images/Recipe/eggBacon.jpg" class="img-responsive slide icon-slide-container image" title="test"> >
+            <h4>TEST Text IN Here</h4>
+            <p class="marg">Test filling in for image process</p>
+            </a>
+            </div-->
+
+
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="functions.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!',
+                seen: false,
+                todos: [{
+                    text: 'Learn JavaScript',
+                    checked: false
+                }, {
+                    text: 'Learn Vue',
+                    checked: false
+                }, {
+                    text: 'Build something awesome',
+                    checked: false
+                }]
+            },
+            /*
+            computed: {
+                /*
+                iframeUrl: () => {
+                    console.log(this.todos)
+                    if(!this.todos){
+                        return '';
+                    }
+                    return this.todos.filter((todo) => { 
+                        return todo.checked == false;
+                    });
+                }
+                todo() {
+                    return this.todos.filter((todo) => {
+                        return todo.checked == flase;
+                    }) 
+                }
+            },*/
+            methods: {
+                submitMessage: function() {
+
+
+                }
+            }
+        })
+    </script>
+</body>
+
+
+
+
+</html>
