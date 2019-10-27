@@ -61,6 +61,8 @@ var newpath;
 const pull_result = [];
 const url_result = [];
 var img_text = [];
+//array to stro recipes
+const recipes_result = [];
 
 // Create an S3 client
 var s3 = new AWS.S3();
@@ -102,11 +104,13 @@ app.get('/generate', (req, res) => {
         str = str + '\"' + ingredients[i] + '\"' + ', ';
     }
     str = str + '\"' + ingredients[ingredients.length - 1] + '\"' + ")";
-    var queryreq = 'select * from ingredients join pivot on pivot.ingredients_id = ingredients.id where ingredients.name in ' + str;
+    var queryreq = 'select * from ingredients join pivot on pivot.ingredients_id = ingredients.id join recipes on pivot.`recipes_id` = recipes_id where ingredients.name in ' + str;
+
     con.query(queryreq, function(err, result, fields){
         if (err) throw err;
         for (var j of result){
             pull_result.push(j.recipes_id);
+            recipes_result.push(j.name);
         }
         console.log(pull_result);
         res.send(pull_result.toString());
@@ -134,11 +138,14 @@ app.get('/getRecipe', (req, res) => {
         str = str + '\"' + pull_result[i] + '\"' + ', ';
     }
     str = str + '\"' + pull_result[pull_result.length - 1] + '\"' + ")";
-    var urlreq = 'select * from recipes join pivot on pivot.recipes_id = recipes.id where recipes.id in ' + str;
+    var urlreq = 'select * from recipes where recipes.id in ' + str;
+    
     con.query(urlreq, function(err, result, fields){
         if (err) throw err;
         for (var j of result){
-            url_result.push([j.name, j.url, j.image]);
+            //push to reciesp_result array
+            recipes_result.push(j.name);
+            url_result.push([j.url, j.image]);
         }
         console.log(url_result);
         res.send(url_result.toString());
