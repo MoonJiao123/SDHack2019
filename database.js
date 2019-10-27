@@ -105,7 +105,11 @@ function processImg(path, res) {
         expiredIn10d = formatImgText(img_text);
         console.log(expiredIn10d);
         console.log(img_text);
-        var ingredients = expiredIn10d;
+        var ingredients = [];
+        for (var i = 0; i < expiredIn10d.length; i++){
+            ingredients.push(expiredIn10d[i].ing);
+        }
+        console.log(ingredients);
         var str = '(';
         for (var i = 0; i < ingredients.length - 1; i++){
             str = str + '\"' + ingredients[i] + '\"' + ', ';
@@ -122,7 +126,7 @@ function processImg(path, res) {
 }
 
 function formatImgText(textInImg) {
-    var formatted = [];
+    var day = 86400000;
     var urgent = [];
     for (var s of textInImg){
         if (all_ingre.includes(s[0])){
@@ -132,10 +136,13 @@ function formatImgText(textInImg) {
             } else {
                 dt = -1;
             }
-            if (dt>0 && dt - Date.parse(new Date) < 864000000){ // Ten Days
-                urgent.push(s[0]);
+            var inserted = false;
+            for (var i = 1; i < 11; i++){
+                if (dt>0 &&  dt - Date.parse(new Date) < day * i && inserted == false ){ // Ten Days
+                    urgent.push({ ing: s[0], days : i});
+                    inserted = true;
+                }
             }
-            formatted.push(s[0]);
         }
     }
     return urgent;
