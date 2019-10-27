@@ -8,12 +8,12 @@ const server = http.createServer(app);
 
 // Load the SDK and UUID
 var AWS = require('aws-sdk');
-AWS.config.update({region: "us-west-2"})
-// Initialize the Amazon Cognito credentials provider
-// AWS.config.region = 'us-east-1'; // Region
-// AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-//     IdentityPoolId: 'us-east-1:6a38f550-ce8a-4070-bea4-2c39d86d51e1',
-// });
+AWS.config.update({ region: "us-west-2" })
+    // Initialize the Amazon Cognito credentials provider
+    // AWS.config.region = 'us-east-1'; // Region
+    // AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+    //     IdentityPoolId: 'us-east-1:6a38f550-ce8a-4070-bea4-2c39d86d51e1',
+    // });
 
 // const config = new AWS.Config({
 //     // accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -48,15 +48,16 @@ var con = mysql.createConnection({
     database: "recipes"
 });
 
-con.connect(function (err) {
-  if (err) throw err;
-  console.log("Connected!");
+con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
 });
 
 
 // List of ingredients, pulled_idx, url
-const all_ingre =  ['egg','milk','avocado','fish','beef','chicken','tofu','pork','beans','pepper','cauliflower',
-'rice','cabbage','lettuce','carrot','onion','spinash','potato','tomato','broccoli'];
+const all_ingre = ['egg', 'milk', 'avocado', 'fish', 'beef', 'chicken', 'tofu', 'pork', 'beans', 'pepper', 'cauliflower',
+    'rice', 'cabbage', 'lettuce', 'carrot', 'onion', 'spinash', 'potato', 'tomato', 'broccoli'
+];
 
 
 
@@ -73,13 +74,13 @@ app.post('/checkBox', (req, res) => {
 
 app.post('/insertImage', (req, res) => {
     var form = new formidable.IncomingForm();
-    form.parse(req, function (err, fields, files) {
-      var oldpath = files.filetoupload.path;
-      processImg(oldpath, res);
+    form.parse(req, function(err, fields, files) {
+        var oldpath = files.filetoupload.path;
+        processImg(oldpath, res);
     });
 });
 
-function processImg(path, res){
+function processImg(path, res) {
     const params = {
         Image: {
             Bytes: fs.readFileSync(path)
@@ -90,16 +91,16 @@ function processImg(path, res){
         var expiredIn5d = [];
         if (err) console.log(err, err.stack); // an error occurred
         else {
-            console.log(data); 
-            for (var d of data.TextDetections){
-                if (d.Type == "LINE"){
-                    if (d.DetectedText.substr(d.DetectedText.length-1).match(/X/g)){ // Check if last character is 'X', which is ingre
+            console.log(data);
+            for (var d of data.TextDetections) {
+                if (d.Type == "LINE") {
+                    if (d.DetectedText.substr(d.DetectedText.length - 1).match(/X/g)) { // Check if last character is 'X', which is ingre
                         img_text.push(d.DetectedText.toLowerCase().split(" "));
                     } // img_text in the format of ["name", "expiration date", "price", "IsIngreFlag"]
                 }
             }
-            
-        }            // successful response
+
+        } // successful response
 
         img_text, expireIn5d = formatImgText(img_text);
         console.log(expiredIn5d);
@@ -107,18 +108,18 @@ function processImg(path, res){
     });
 }
 
-function formatImgText(textInImg){
+function formatImgText(textInImg) {
     var formatted = [];
     var urgent5d = [];
-    for (var s of textInImg){
-        if (all_ingre.includes(s[0])){
+    for (var s of textInImg) {
+        if (all_ingre.includes(s[0])) {
             var dt;
-            if (s[1].length == 6){
-                dt = Date.parse('20' + s[1].substr(4,2) + "-" + s[1].substr(0,2) + "-" + s[1].substr(2,2));
+            if (s[1].length == 6) {
+                dt = Date.parse('20' + s[1].substr(4, 2) + "-" + s[1].substr(0, 2) + "-" + s[1].substr(2, 2));
             } else {
                 dt = -1;
             }
-            if (dt>0 && dt - Date.parse(new Date) < 432000000){ // Five Days
+            if (dt > 0 && dt - Date.parse(new Date) < 432000000) { // Five Days
                 urgent5d.push(s[0]);
             }
             formatted.push(s[0]);
@@ -140,13 +141,13 @@ function formatImgText(textInImg){
 app.post('/generate', (req, res) => {
     var ingredients = req.body.ingredient;
     var str = '(';
-    for (var i = 0; i < ingredients.length - 1; i++){
+    for (var i = 0; i < ingredients.length - 1; i++) {
         str = str + '\"' + ingredients[i] + '\"' + ', ';
     }
     str = str + '\"' + ingredients[ingredients.length - 1] + '\"' + ")";
     var queryreq = 'select recipes.name, recipes.url, recipes.image, count(*) as freq from ingredients join pivot on pivot.ingredients_id = ingredients.id  join recipes on pivot.recipes_id = recipes.id where ingredients.name in ' + str + ' group by recipes.name, recipes.url, recipes.image order by freq desc ';
 
-    con.query(queryreq, function(err, result, fields){
+    con.query(queryreq, function(err, result, fields) {
         /*if (err) throw err;
         for (var j of result){
             pull_result.push(j.recipes_id);
@@ -196,6 +197,6 @@ function base64_encode(file) {
     return new Buffer(bitmap).toString('base64');
 }
 
-function onlyUnique(value, index, self) { 
+function onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
 }
