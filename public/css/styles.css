@@ -260,3 +260,8 @@ div {
     margin-right: 10vw;
     margin-left: 10vw;
 }
+
+.limitLine {
+    overflow: hidden;
+    height: 22px;
+}
