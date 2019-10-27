@@ -138,10 +138,7 @@ function formatImgText(textInImg){
 //});
 
 app.post('/generate', (req, res) => {
-    var pull_result = [];
-    var recipes_result = [];
-    var count_result = [];
-    var ingredients = req.body.ingredient.filter(onlyUnique);
+    var ingredients = req.body.ingredient;
     var str = '(';
     for (var i = 0; i < ingredients.length - 1; i++){
         str = str + '\"' + ingredients[i] + '\"' + ', ';
