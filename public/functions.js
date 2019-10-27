@@ -36,10 +36,10 @@ function select() {
                 html += url + "\">";
                 html += "<div class=\"image-container image\" style=\"background-image:url('";
                 html += image;
-                html += "')\"></div><h4>";
+                html += "')\"></div><h4 class=\"limitLine\">";
                 html += name;
                 html += "</h4></a></div>";
-                $(html).insertAfter($("#dymhtml"));
+                $(html).hide().insertAfter($("#dymhtml")).fadeIn(800);
                 console.log(html);
             }
         },
@@ -95,7 +95,7 @@ function insertImageSubmit() {
                 html += "')\"></div><h4 class=\"limitLine\">";
                 html += name;
                 html += "</h4></a></div>";
-                $(html).hide().insertAfter($("#dymhtml")).fadeIn(500);
+                $(html).hide().insertAfter($("#dymhtml")).fadeIn(800);
                 console.log(html);
             }
 
