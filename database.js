@@ -55,11 +55,11 @@ con.connect(function (err) {
 
 
 // List of ingredients, pulled_idx, url
-const ingredients = [];
-const checked = [];
+var ingredients = [];
+var checked = [];
 var newpath;
-const pull_result = [];
-const url_result = [];
+var pull_result = [];
+var url_result = [];
 var img_text = [];
 
 // Create an S3 client
@@ -144,6 +144,22 @@ app.get('/getRecipe', (req, res) => {
         res.send(url_result.toString());
     });  
 });
+
+// Read Checkbox @Dillon
+function readCheckbox() {
+    var ingredients = []
+    var boxes = document.getElementsByName("ingredient-check");
+    for (var i = 0; i<boxes.length; i++) {
+        if(boxes[i].checked) {
+            ingredients.push(boxes[i].value);
+        }
+    }
+    console.log(ingredients);
+    return ingredients;
+}
+
+
+
 
 function base64_encode(file) {
     // read binary data
