@@ -66,6 +66,9 @@ var urgent5d_id = [];
 var rec_id_dicts;
 const all_ingre =  ['egg','milk','avocado','fish','beef','chicken','tofu','pork','beans','pepper','cauliflower',
 'rice','cabbage','lettuce','carrot','onion','spinash','potato','tomato','broccoli'];
+//array to stro recipes
+var recipes_result = [];
+var count_result = [];
 
 // Create an S3 client
 var s3 = new AWS.S3();
@@ -108,19 +111,17 @@ app.get('/generate', (req, res) => {
         str = str + '\"' + ingredients[i] + '\"' + ', ';
     }
     str = str + '\"' + ingredients[ingredients.length - 1] + '\"' + ")";
-    var queryreq = 'select * from ingredients join pivot on pivot.ingredients_id = ingredients.id where ingredients.name in ' + str;
+    var queryreq = 'select recipes.name, recipes.url, recipes.image, count(*) as freq from ingredients join pivot on pivot.ingredients_id = ingredients.id  join recipes on pivot.recipes_id = recipes.id where ingredients.name in ' + str + ' group by recipes.name, recipes.url, recipes.imageorder by freq desc ';
+
     con.query(queryreq, function(err, result, fields){
         if (err) throw err;
         for (var j of result){
             pull_result.push(j.recipes_id);
-            if (j.name in urgent5d){
-                urgent5d_id.push(j.recipes_id);
-            }
+            recipes_result.push(j.name);
+            count_result.push(j.freq);
         }
-        console.log(pull_result);
-        rec_id_dicts = recipes_id_dic(pull_result)
-        console.log(rec_id_dicts);
-        res.send(pull_result.toString());
+        console.log(recipes_result);
+        res.send(recipes_result.toString());
     });
 });
 
@@ -139,12 +140,14 @@ app.get('/getRecipe', (req, res) => {
     }
     str = str + '\"' + pull_result[pull_result.length - 1] + '\"' + ")";
     var urlreq = 'select * from recipes where recipes.id in ' + str;
+    
     con.query(urlreq, function(err, result, fields){
         if (err) throw err;
         for (var j of result){
-                url_result.push([j.name, j.url, j.image]);
+            //push to reciesp_result array
+            url_result.push([j.url, j.image]);
         }
-        console.log(url_result);
+        console.log(recipes_result);
         res.send(url_result.toString());
     });  
 });
