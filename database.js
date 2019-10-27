@@ -57,9 +57,6 @@ con.connect(function (err) {
 // List of ingredients, pulled_idx, url
 const all_ingre =  ['egg','milk','avocado','fish','beef','chicken','tofu','pork','beans','pepper','cauliflower',
 'rice','cabbage','lettuce','carrot','onion','spinash','potato','tomato','broccoli'];
-//array to stro recipes
-var recipes_result = [];
-var count_result = [];
 
 
 
