@@ -104,6 +104,10 @@ app.get('/getCheck', (req, res) => {
     res.send(checked.toString());
 });
 
+app.post('/generate', (req, res) => {
+    console.log(req.body);
+});
+
 app.get('/generate', (req, res) => {
     pull_result = [];
     recipes_result = [];
