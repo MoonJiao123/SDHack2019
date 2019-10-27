@@ -1,0 +1,201 @@
+.navbar-custom {
+    color: #000000;
+    background-color: #ffc669;
+}
+
+.white {
+    color: #ffffff;
+}
+
+.image {
+    /*display: block;
+    position: absolute;
+    
+      top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    
+    overflow: hidden;
+*/
+    max-width: 100%;
+    max-height: 100%;
+    transition: margin-top .5s;
+    -moz-transition: margin-top .5s;
+    /* Firefox 4 */
+    -webkit-transition: margin-top .5s;
+    /* Safari and Chrome */
+    -o-transition: margin-top .5s;
+    /* Opera */
+}
+
+.image:hover {
+    margin-top: -10px;
+}
+
+
+/* We're working with the body tag, and so with the WHOLE page */
+
+.background-color {
+    background-color: #ffffff;
+    /* The page background will be black */
+}
+
+img.smallicon {
+    float: left;
+    width: 40px;
+    height: 40px;
+}
+
+img.icon {
+    /*float: left;*/
+    width: 60px;
+    height: 60px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.box {
+    height: 80px;
+}
+
+.box:hover {
+    background-color: #eec5b5;
+    cursor: pointer;
+}
+
+
+/*checkBox styles*/
+
+md-checkbox {
+    margin-bottom: 16px;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+    min-width: 20px;
+    min-height: 20px;
+    margin-left: 0;
+    margin-right: 16px;
+}
+
+h1.white {
+    margin-top: 20px;
+    font-variant: small-caps;
+    color: rgb(255, 255, 255);
+    font-size: 300%;
+    display: inline-block;
+    font-weight: 650;
+    padding-left: 10px;
+}
+
+.sec {
+    margin: 25px 25px 25px 25px;
+}
+
+.addPadding {
+    padding: 25px 25px;
+}
+
+.icon-slide-container {}
+
+div {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif
+}
+
+.p {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif
+}
+
+.checkbox label:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.checkbox .cr {
+    position: relative;
+    display: inline-block;
+    border: 2px solid #fb7036;
+    border-radius: 0em;
+    width: 1.3em;
+    height: 1.3em;
+    float: left;
+    margin-right: .5em;
+}
+
+.checkbox .cr:hover {
+    border: 3px solid #fb7036;
+}
+
+.checkbox .cr .cr-icon {
+    position: absolute;
+    font-size: .8em;
+    line-height: 0;
+    top: 50%;
+    left: 15%;
+}
+
+.checkbox label input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox label input[type="checkbox"]+.cr>.cr-icon {
+    opacity: 0;
+}
+
+.checkbox label input[type="checkbox"]:checked+.cr>.cr-icon {
+    opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled+.cr {
+    opacity: .5;
+}
+
+.color1 {
+    background-color: #f3e4cd;
+    width: 90%;
+}
+
+.title1 {
+    color: rgb(105, 60, 60);
+    font-size: 150%;
+    font-weight: 650;
+}
+
+.color2 {
+    background-color: #e4f3cd;
+    width: 90%;
+}
+
+.title2 {
+    color: rgb(91, 116, 66);
+    font-size: 150%;
+    font-weight: 650;
+}
+
+.image-container {
+    display: block;
+    min-height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.shadow {
+    -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .35));
+    filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .35));
+    /* Similar syntax to box-shadow */
+}
+
+.hero--bg {
+    position: absolute;
+    left: 0;
+    background-color: #fb7036;
+    width: 50vw;
+    height: 100vh;
+}

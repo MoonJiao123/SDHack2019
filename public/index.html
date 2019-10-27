@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> FOOD WASTE </title>
+    <link type="text/css" rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+
+<body class="background-color">
+
+    <nav class="navbar navbar-custom">
+        <!--a class="navbar-brand white" href="index.html">FOOD WASTE</a-->
+        <div class="container">
+            <img class="icon shadow" src="images/FoodFlatArt/pear.svg" />
+            <h1 class="white changeFont shadow" href="index.html">REciPE 101.</h1>
+        </div>
+    </nav>
+
+
+
+    <!--
+        <div class="col">
+            <div class="col">
+                <a href="/getData"> View All Flavors </a>
+            </div>
+        </div>
+-->
+    <div class="container" id="app">
+        <div class="col-md-3 no-float addPadding">
+            <div class="row">
+                <div class="container color1" style="width: 90%">
+                    <img class="smallicon shadow" style="margin: 5px" src="images/FoodFlatArt/meat.svg" />
+                    <span class="title1">
+                            Protein
+                        </span>
+                </div>
+                <div class="checkbox">
+                    <label>
+                    <input type="checkbox" value="">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    Chicken
+                </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                    <input type="checkbox" value="">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    Chicken
+                </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                    <input type="checkbox" value="">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    Chicken
+                </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                    <input type="checkbox" value="">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    Chicken
+                </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                    <input type="checkbox" value="">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    Chicken
+                </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="container color2" style="width: 90%">
+                    <img class="smallicon shadow" style="margin: 5px" src="images/FoodFlatArt/broccli.svg" />
+                    <span class="title2">
+                            Vegetable
+                        </span>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Chicken
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Chicken
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Chicken
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Chicken
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                        Chicken
+                    </label>
+                </div>
+            </div>
+        </div>
+        <!--
+            <div class="col-md-3 no-float">
+                <div class="row">
+                    <li v-for="todo in todos">
+                        <div class="box">
+                            <input class="form-check-input" type="checkbox" v-model="todo.checked">
+                            <img src="images/FoodFlatArt/broccli.svg" class="smallicon" title="test"> {{ todo.checked }} {{ todo.text }}
+                        </div>
+                    </li>
+                    <div action="/" class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            Default {{ message }} {{ seen }}
+                        </label>
+                    </div>
+                    <div class="form-check" v-if="seen">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
+                        <label class="form-check-label" for="defaultCheck2">
+                            Disabled checkbox
+                        </label>
+                    </div>
+                    
+                    <div class="box md-checkbox">
+                        <form action="/checkBox" method="POST">
+
+                            <input class="form-check-input" type="checkbox" name="ingredientChecked" value="ingredientName"> iingredientName
+                            </input>
+                    </div>
+
+                    <input type="submit" value="insert" />
+                    </form>
+
+
+
+                    <button v-on:click="submitMessage">Submit</button>
+                </div>
+                <div class="row">
+                    <form action="/insertData" method="POST">
+                        <p>Ingredients to Add</p>
+                        <input type="text" name="ingred" />
+                        <input type="submit" value="insert" />
+                    </form>
+
+                    <form action="/insertImage" method="POST" enctype="multipart/form-data">
+                        <p>Image to Add</p>
+                        <input type="file" name="filetoupload" />
+                        <input type="submit" value="submit" />
+                    </form>
+
+                    <form action="/generate" method="GET">
+                        <p>Generate the look up index of recipe</p>
+                        <input type="submit" value="generate" />
+                    </form>
+
+                    <form action="/getRecipe" method="GET">
+                        <p>Get the url of the recipe</p>
+                        <input type="submit" value="GetUrl" />
+                    </form>
+
+                    <form action="/count" method="GET">
+                        <p>Ingredients to Find How Many Exist in our Database</p>
+                        <input type="text" name="ingred" />
+                        <input type="submit" value="search" />
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="form-check">
+                        <label class="form-check-label">check</label>
+                    </div>
+                </div>
+-->
+
+        <div class="col-md-9">
+            <div class="row">
+
+                <div class="col-sm-4 icon-slide-container shadow-sm addPadding">
+                    <a href="#">
+                        <!-- <img src="images/Recipe/eggBread.jpg" class="image shadow-sm rounded" title="test"> -->
+                        <div class="image-container image" style="background-image:url(images/Recipe/eggBread.jpg)">
+
+                        </div>
+
+                        <h4>TEST Text IN Here</h4>
+                        <p class="marg">Test filling in for image process</p>
+                    </a>
+                </div>
+
+                <div class="col-sm-4 icon-slide-container addPadding">
+                    <a href="#">
+                        <div class="image-container image" style="background-image:url(images/Recipe/eggCloud.jpg)"></div>
+                        <!-- <img src="images/Recipe/eggCloud.jpg" class="img-responsive slide icon-slide-container image" title="test"> -->
+
+                        <h4>TEST Text IN Here</h4>
+                        <p class="marg">Test filling in for image process</p>
+                    </a>
+                </div>
+                <div class="col-sm-4 icon-slide-container addPadding">
+                    <a href="#">
+                        <div class="image-container image" style="background-image:url(images/Recipe/eggStrip.jpg)"></div>
+                        <!-- <img src="images/Recipe/eggStrip.jpg" class="img-responsive slide icon-slide-container image" title="test"> -->
+                        <h4>TEST Text IN Here</h4>
+                        <p class="marg">Test filling in for image process</p>
+                    </a>
+                </div>
+                <div class="col-sm-4 icon-slide-container addPadding">
+                    <a href="#">
+                        <div class="image-container image" style="background-image:url(images/Recipe/eggTomato.jpg)"></div>
+                        <!-- <img src="images/Recipe/eggTomato.jpg" class="img-responsive slide icon-slide-container image" title="test"> -->
+                        <h4>TEST Text IN Here</h4>
+                        <p class="marg">Test filling in for image process</p>
+                    </a>
+                </div>
+                <div class="col-sm-4 icon-slide-container addPadding">
+                    <a href="#">
+                        <div class="image-container image" style="background-image:url(images/Recipe/eggTuna.jpg)"></div>
+                        <!-- <img src="images/Recipe/eggTuna.jpg" class="img-responsive slide icon-slide-container image" title="test"> -->
+                        <h4>TEST Text IN Here</h4>
+                        <p class="marg">Test filling in for image process</p>
+                    </a>
+                </div>
+                <div class="col-sm-4 icon-slide-container addPadding">
+                    <a href="#">
+                        <div class="image-container image" style="background-image:url(images/Recipe/eggBacon.jpg)"></div>
+                        <!-- <img src="images/Recipe/eggBacon.jpg" class="img-responsive slide icon-slide-container image" title="test"> -->
+                        <h4>TEST Text IN Here</h4>
+                        <p class="marg">Test filling in for image process</p>
+                    </a>
+                </div>
+
+
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+    </div>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!',
+                seen: false,
+                todos: [{
+                    text: 'Learn JavaScript',
+                    checked: false
+                }, {
+                    text: 'Learn Vue',
+                    checked: false
+                }, {
+                    text: 'Build something awesome',
+                    checked: false
+                }]
+            },
+            /*
+            computed: {
+                /*
+                iframeUrl: () => {
+                    console.log(this.todos)
+                    if(!this.todos){
+                        return '';
+                    }
+                    return this.todos.filter((todo) => { 
+                        return todo.checked == false;
+                    });
+                }
+                todo() {
+                    return this.todos.filter((todo) => {
+                        return todo.checked == flase;
+                    }) 
+                }
+            },*/
+            methods: {
+                submitMessage: function() {
+
+
+                }
+            }
+        })
+    </script>
+</body>
+
+
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Home Page </title>
+        <link type="text/css" rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <a href="/getData"> View All Flavors </a>
+        <h1> Ice Cream Wish List </h1>
+        <form action="/insertData" method="POST">
+            <p>Ice Cream to Add</p>
+            <input type="text" name="flavor"/>
+            <input type="submit" value="insert"/>
+        </form>
+
+        <form action="/count" method="GET">
+            <p>Ice Cream to Find How Many Exist in our Database</p>
+            <input type="text" name="flavor" />
+            <input type="submit" value="search" />
+        </form>
+
+        <form action="/randomFlavor" method="GET">
+            <p>Grabbing a random flavor</p>
+            <input type="submit" value="randomFlavor"/>
+        </form>
+    </body>
+</html>
