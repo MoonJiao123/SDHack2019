@@ -38,7 +38,7 @@ body {
     margin-right: -500px;
     font-size: 180px;
     font-weight: 900;
-    line-height: 90%;
+    line-height: 100%;
 }
 
 .header-title span {
@@ -84,14 +84,12 @@ body {
 
 
 /*
-
 .keyframe-test {
     height: 0;
     width: 0;
     background-color: #151515;
     animation: my-animation 2s 2500ms infinite alternate both;
 }
-*/
 
 @keyframes my-animation {
     from {
@@ -101,6 +99,27 @@ body {
     to {
         height: 100px;
         width: 100px;
+    }
+}*/
+
+.keyframe {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    z-index: 0;
+    top: 400px;
+    left: 6000px;
+    animation: my-animation 2s 2500ms 1 alternate both;
+}
+
+@keyframes my-animation {
+    from {
+        top: 300px;
+        left: 100vw;
+    }
+    to {
+        top: 300px;
+        left: 65vw;
     }
 }
 
