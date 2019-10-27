@@ -87,7 +87,7 @@ function processImg(path, res){
     };
     rekognition.detectText(params, function(err, data) {
         var img_text = [];
-        var expiredIn5d = [];
+        var expiredIn10d = [];
         if (err) console.log(err, err.stack); // an error occurred
         else {
             console.log(data); 
@@ -101,9 +101,10 @@ function processImg(path, res){
             
         }            // successful response
 
-        img_text, expiredIn5d = formatImgText(img_text);
-        console.log(expiredIn5d);
-        var ingredients = expiredIn5d;
+        expiredIn10d = formatImgText(img_text);
+        console.log(expiredIn10d);
+        console.log(img_text);
+        var ingredients = expiredIn10d;
         var str = '(';
         for (var i = 0; i < ingredients.length - 1; i++){
             str = str + '\"' + ingredients[i] + '\"' + ', ';
@@ -113,15 +114,15 @@ function processImg(path, res){
 
         con.query(queryreq, function(err, result, fields){
 
-            console.log(result);
-            res.json(result);
+            //console.log(result);
+            res.json({ingreL : img_text, exp : expiredIn10d, k : result});
         });
     });    
 }
 
 function formatImgText(textInImg){
     var formatted = [];
-    var urgent5d = [];
+    var urgent = [];
     for (var s of textInImg){
         if (all_ingre.includes(s[0])){
             var dt;
@@ -130,13 +131,13 @@ function formatImgText(textInImg){
             } else {
                 dt = -1;
             }
-            if (dt>0 && dt - Date.parse(new Date) < 432000000){ // Five Days
-                urgent5d.push(s[0]);
+            if (dt>0 && dt - Date.parse(new Date) < 864000000){ // Ten Days
+                urgent.push(s[0]);
             }
             formatted.push(s[0]);
         }
     }
-    return formatted, urgent5d;
+    return urgent;
 }
 
 // Gets all the ice creams in the array
