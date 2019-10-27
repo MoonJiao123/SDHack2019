@@ -105,6 +105,9 @@ app.get('/getCheck', (req, res) => {
 });
 
 app.get('/generate', (req, res) => {
+    pull_result = [];
+    recipes_result = [];
+    count_result = [];
     ingredients = ingredients.filter(onlyUnique);
     var str = '(';
     for (var i = 0; i < ingredients.length - 1; i++){
