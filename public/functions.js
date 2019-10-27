@@ -78,8 +78,8 @@ function insertImageSubmit() {
             console.log(expireIn10d);
             var d = data.k;
             $("#dymhtml").html("");
-            for (var i = 0; i < data.length && i < 9; i++) {
-                var recipe = data[i];
+            for (var i = 0; i < d.length && i < 9; i++) {
+                var recipe = d[i];
                 console.log(recipe);
                 // console.log(recipe);
                 var name = recipe.name;
