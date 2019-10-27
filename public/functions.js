@@ -67,7 +67,11 @@ function insertImageSubmit() {
         success: function(data){   
             //for each loop
             // console.log(data[0].name);
-            var ingreImg = data.ingreL;
+            var ingreImg =[];
+            for (var i of data.ingreL){
+                ingreImg.push(i[0]);
+                $('input[value=\"' + i[0] + '\"]').prop('checked', true);
+            }
             console.log(ingreImg);
             var expireIn10d = data.exp;
             console.log(expireIn10d);
